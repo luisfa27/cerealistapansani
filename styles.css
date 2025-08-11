@@ -45,7 +45,7 @@ h1 {
 }
 
 .logo img {
-    max-width: 200px;
+    max-width: auto;
     height: auto;
 }
 
