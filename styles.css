@@ -70,3 +70,22 @@ footer {
     padding: 10px 0;
     margin-top: 20px;
 }
+
+.contact-page {
+    text-align: center;
+}
+
+.whatsapp-link {
+    display: inline-block;
+    background-color: #25D366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.whatsapp-link:hover {
+    background-color: #128C7E;
+}
