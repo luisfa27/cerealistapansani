@@ -231,7 +231,7 @@
         .about-text { flex: 1; }
         .about-image { 
             flex: 1;
-            max-width: 350px;
+            max-width: 500px;
         }
         .about-image img {
             width: 100%;
@@ -295,10 +295,23 @@
             position: absolute;
             left: 0;
         }
+        
+        .menu-image-container {
+            text-align: center;
+            margin-top: 60px;
+        }
+        .menu-image-container img {
+            max-width: 800px;
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
 
         /* Contato Section */
         .contact-wrapper {
             display: flex;
+            align-items: center; /* Vertically center the items */
             gap: 40px;
             background: var(--white-color);
             padding: 40px;
@@ -383,6 +396,12 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-wrapper {
+                flex-direction: column;
+            }
+        }
+
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             .hero-content h1 { font-size: 2.2rem; }
@@ -421,9 +440,6 @@
             }
 
             .about-content {
-                flex-direction: column;
-            }
-            .contact-wrapper {
                 flex-direction: column;
             }
         }
@@ -467,8 +483,8 @@
                 <div class="container hero-content">
                     <img src="/cerealistapansani/logo.png" alt="Logo Cerealista Pansani" class="welcome-logo">
                     <h1>Direto do produtor para você!</h1>
-                    <p>Qualidade, variedade e o melhor atendimento. Encontre tudo que você precisa em um só lugar.</p>
-                    <a href="#produtos" class="btn nav-link">Conheça nossos produtos</a>
+                    <p>Qualidade, variedade e o melhor atendimento. Encontre tudo que você precisa para seus animais em um só lugar.</p>
+                    <a href="#produtos" class="btn">Conheça nossos produtos</a>
                 </div>
             </div>
         </section>
@@ -517,7 +533,6 @@
                             <li>Rações para equinos, suínos e bovinos</li>
                             <li>Rações para peixes e aves </li>
                             <li>Milho, soja e outros cereais, por saca ou a granel</li>
-                            <li>Sacarias</li>
                         </ul>
                     </div>
                     <div class="product-card">
@@ -528,10 +543,10 @@
                             <li>Café artesanal da região</li>
                             <li>Cachaças artesanais</li>
                         </ul>
-                     <div class="about-image">
-                        <img src="/cerealistapansani/Menu.jpg" alt="Imagem da loja Cerealista Pansani">
                     </div>
-                    </div>
+                </div>
+                <div class="menu-image-container">
+                    <img src="/cerealistapansani/Menu.jpg" alt="Menu de Produtos">
                 </div>
             </div>
         </section>
@@ -543,14 +558,16 @@
         <section id="contato">
             <div class="container">
                 <h2>Entre em Contato</h2>
-                <p class="section-subtitle"> Estamos prontos para te atender! Fale conosco pelo WhatsApp e venha nos visitar.</p>
+                <p class="section-subtitle">Estamos prontos para te atender! Fale conosco pelo WhatsApp e venha nos visitar.</p>
                 <div class="contact-wrapper">
                     <div class="contact-info">
                         <h3>Informações</h3>
                         <div class="contact-item">
                             <i class="fa-solid fa-phone"></i>
                             <div class="contact-item-text">
-                                <p><strong> Telefone/WhatsApp:</strong> <a href="https://wa.me/5516993596161" target="_blank" rel="noopener" class="whatsapp-link"> <i class="fab fa-whatsapp"></i> (16) 99359-6161</a>
+                                <p><strong>Telefone/WhatsApp</strong></p>
+                                <a href="https://wa.me/5516993596161" target="_blank" rel="noopener" class="whatsapp-link">
+                                    <i class="fab fa-whatsapp"></i> (16) 99359-6161
                                 </a>
                             </div>
                         </div>
