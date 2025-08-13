@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerealista Pansani - Agro & Pet</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Melhorado para Cerealista Pansani
+        Aqui estão todos os estilos para o novo design.
+        */
+
+        /* CSS Variables */
+        :root {
+            --primary-color: #6B4F4F; /* Marrom rústico */
+            --secondary-color: #4CAF50; /* Verde natureza/agro */
+            --accent-color: #FF9800; /* Laranja amigável/pet */
+            --bg-color: #FDFCF8; /* Fundo levemente amarelado */
+            --text-color: #333333;
+            --white-color: #FFFFFF;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+        }
+
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        .logo i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        .logo a {
+             text-decoration: none;
+             color: inherit;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            padding-bottom: 5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-color);
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Main Content & Sections */
+        main > section {
+            padding: 80px 0;
+            display: none; /* Hide all sections by default */
+        }
+
+        main > section:first-child {
+            display: block; /* Show the first section (Home) by default */
+        }
+        
+        h1, h2 {
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 600px;
+            margin: -30px auto 50px auto;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn:hover {
+            background-color: var(--white-color);
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Home Section */
+        #home {
+            padding: 0; /* No padding for hero section */
+        }
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 80vh;
+            background-color: var(--white-color);
+            position: relative;
+            padding: 40px 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--primary-color);
+            max-width: 700px;
+        }
+        .hero-content h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .welcome-logo {
+            max-width: 450px;
+            width: 100%;
+            margin: 0 auto 30px auto;
+            display: block;
+        }
+
+        /* Sobre Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .about-text { flex: 1; }
+        .about-image { 
+            flex: 1;
+            max-width: 500px;
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        /* Produtos Section */
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border-top: 5px solid transparent;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+        .product-card:nth-child(1) { border-color: var(--accent-color); } /* Pet */
+        .product-card:nth-child(2) { border-color: var(--secondary-color); } /* Agro */
+        .product-card:nth-child(3) { border-color: #8D6E63; } /* Naturais */
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .product-card h3 i {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+        .product-card:nth-child(1) h3 i { color: var(--accent-color); }
+        .product-card:nth-child(2) h3 i { color: var(--secondary-color); }
+        .product-card:nth-child(3) h3 i { color: #8D6E63; }
+
+        .product-card ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+        .product-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        .product-card ul li::before {
+            content: '\f00c'; /* check icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Contato Section */
+        .contact-wrapper {
+            display: flex;
+            gap: 40px;
+            background: var(--white-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+        .contact-info, .contact-map {
+            flex: 1;
+        }
+        .contact-info h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-top: 5px;
+            width: 30px;
+            text-align: center;
+        }
+        .contact-item p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        .contact-item strong {
+            display: block;
+            color: var(--primary-color);
+        }
+        .contact-item-text {
+            flex-grow: 1;
+        }
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        .whatsapp-link:hover {
+            background-color: #128C7E;
+        }
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: 0;
+            border-radius: var(--border-radius);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        .footer-content p {
+            margin-bottom: 20px;
+        }
+        .social-links a {
+            color: var(--white-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+
+            .header-container {
+                padding: 0 20px;
+            }
+
+            .mobile-menu-icon {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 75px; /* Altura do header */
+                left: 0;
+                width: 100%;
+                background-color: var(--white-color);
+                flex-direction: column;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+            }
+            
+            nav.active {
+                max-height: 300px; /* Altura suficiente para os links */
+                padding: 10px 0;
+            }
+
+            nav ul li {
+                display: block;
+                text-align: center;
+                margin: 15px 0;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+            .contact-wrapper {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+    HEADER
+    O cabeçalho agora é fixo e tem um menu responsivo para celulares.
+    -->
+    <header>
+        <div class="header-container container">
+            <div class="logo">
+                <a href="#home" class="nav-link">
+                    <i class="fa-solid fa-paw"></i>
+                    Cerealista Pansani
+                </a>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="#produtos" class="nav-link">Produtos</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-icon" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 
+        SEÇÃO HOME (index.html)
+        Esta é a nova página inicial com um visual mais impactante.
+        -->
+        <section id="home">
+            <div class="hero">
+                <div class="container hero-content">
+                    <img src="/images/logo.png" alt="Logo Cerealista Pansani" class="welcome-logo">
+                    <h1>Direto do produtor para você!</h1>
+                    <p>Qualidade, variedade e o melhor atendimento. Encontre tudo que você precisa para seus animais em um só lugar.</p>
+                    <a href="#produtos" class="btn">Conheça nossos produtos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        SEÇÃO SOBRE (sobre.html)
+        Layout melhorado para alinhar imagem e texto.
+        -->
+        <section id="sobre">
+            <div class="container">
+                <h2>Nossa História, Sua Confiança</h2>
+                <p class="section-subtitle">Tradição e modernidade caminhando juntas para oferecer sempre o melhor para você.</p>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="/images/" alt="Imagem da loja Cerealista Pansani">
+                    </div>
+                    <div class="about-text">
+                        <h3>Bem-vindo à Cerealista Pansani!</h3>
+                        <p>A Cerealista Pansani tem o compromisso, há 37 anos, de oferecer os melhores produtos para o campo e para seus animais de estimação. Com uma tradição de qualidade e bom atendimento, buscamos sempre a satisfação de nossos clientes.</p>
+                        <p>Nossa equipe está sempre pronta para ajudar você a encontrar o que precisa, seja para sua criação de animais de grande porte, para seus pets ou para sua horta e jardim. Venha nos visitar e descubra a diferença que a paixão pelo que fazemos pode oferecer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        SEÇÃO PRODUTOS (produtos.html)
+        Os produtos agora são exibidos em cards para melhor visualização.
+        -->
+        <section id="produtos">
+            <div class="container">
+                <h2>Nossos Produtos</h2>
+                 <p class="section-subtitle">Soluções completas em rações, cereais e produtos naturais com a qualidade que você já conhece.</p>
+                <div class="product-list">
+                    <div class="product-card">
+                        <h3><i class="fa-solid fa-dog"></i> Linha Pet</h3>
+                        <ul>
+                            <li>Rações para Gatos e Cachorros (Premium a Superpremium)</li>
+                            <li>Rações para aves (pássaros)</li>
+                            <li>Rações para coelhos</li>
+                        </ul>
+                    </div>
+                    <div class="product-card">
+                        <h3><i class="fa-solid fa-wheat-awn"></i> Linha Agro</h3>
+                        <ul>
+                            <li>Rações para equinos, suínos e bovinos</li>
+                            <li>Rações para peixes e aves </li>
+                            <li>Milho, soja e outros cereais, por saca ou a granel</li>
+                            <li>Sacarias</li>
+                        </ul>
+                    </div>
+                    <div class="product-card">
+                        <h3><i class="fa-solid fa-leaf"></i> Naturais do Produtor</h3>
+                        <ul>
+                            <li>Mel puro e derivados</li>
+                            <li>Ovos caipiras frescos</li>
+                            <li>Café artesanal da região</li>
+                            <li>Cachaças artesanais</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+        SEÇÃO CONTATO (contato.html)
+        Informações de contato reorganizadas e com mais destaque.
+        -->
+        <section id="contato">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <p class="section-subtitle"> Estamos prontos para te atender! Fale conosco pelo WhatsApp e venha nos visitar.</p>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h3>Informações</h3>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div class="contact-item-text">
+                                <p><strong>Telefone/WhatsApp</strong></p>
+                                <p>(16) 99359-6161</p>
+                                <a href="https://wa.me/5516993596161" target="_blank" rel="noopener" class="whatsapp-link">
+                                <i class="fab fa-whatsapp"></i> Iniciar Conversa
+                                </a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-clock"></i>
+                            <div>
+                                <p><strong>Horário de Funcionamento</strong></p>
+                                <p>Seg a Sex: 07:00 – 17:30<br>Sáb: 07:00 – 12:00</p>
+                            </div>
+                        </div>
+                         <div class="contact-item">
+                            <i class="fa-solid fa-map-marker-alt"></i>
+                            <div>
+                                <p><strong>Endereço</strong></p>
+                                <p>R. Joaquim Leôncio Coelho, 120<br>Jardim Conceição Leite, Franca - SP</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <iframe src="https://www.google.com/maps?q=R.+Joaquim+Leôncio+Coelho,+120+-+Jardim+Conceicao+Leite,+Franca+-+SP,+14405-362&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 
+    FOOTER
+    Rodapé com links para redes sociais (exemplo).
+    -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 Cerealista Pansani. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5516993596161" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript para navegação single-page e menu responsivo
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main > section');
+            const mainNav = document.getElementById('main-nav');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Função para mostrar a seção correta e atualizar o link ativo
+            function showSection(targetId) {
+                // Remove '#' do ID
+                const id = targetId.substring(1);
+
+                sections.forEach(section => {
+                    if (section.id === id) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === targetId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Fecha o menu mobile após clicar
+                if(mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                }
+            }
+            
+            // Event listener para os cliques nos links de navegação
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    
+                    // Se o alvo for a home, rola para o topo
+                    if (targetId === '#home') {
+                        window.scrollTo(0, 0);
+                    }
+                    
+                    showSection(targetId);
+                });
+            });
+
+            // Event listener para o menu mobile
+            mobileMenu.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+
+            // Garante que a seção home seja exibida ao carregar
+            showSection('#home');
+        });
+    </script>
+</body>
+</html>
