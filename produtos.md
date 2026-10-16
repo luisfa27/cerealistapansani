@@ -1,0 +1,306 @@
+
+| Produto / Descrição | Preço | Estoque Atual |
+| --- | --- | --- |
+| **CAFÉ 500G** | R$ 30,00 | 21
+
+ |
+| **CARVÃO 10KG** | R$ 40,00 | 7
+
+ |
+| **CASQUINHA DE SOJA 20KG** | R$ 35,00 | 165
+
+ |
+| **COELHO 20KG** | R$ 68,00 | 20
+
+ |
+| **COELHO 5KG** | R$ 20,00 | 23
+
+ |
+| **EQUESTRE LAZER 40KG** | R$ 105,00 | 100
+
+ |
+| **FARELO DE ARROZ 30KG** | R$ 55,00 | 100
+
+ |
+| **FARELO DE ARROZ AGRANEL** | R$ 3,00 | 199
+
+ |
+| **FARELO DE SOJA 50KG** | R$ 145,00 | 150
+
+ |
+| **FARELO DE SOJA AGRANEL** | R$ 4,00 | 90
+
+ |
+| **FRANGO ENGORDA 20KG** | R$ 80,00 | 50
+
+ |
+| **FRANGO ENGORDA 5KG** | R$ 25,00 | 10
+
+ |
+| **FRANGO INICIAL 20KG** | R$ 85,00 | 5
+
+ |
+| **FRANGO INICIAL 5KG** | R$ 25,00 | 10
+
+ |
+| **FUBÁ DE MILHO AGRANEL** | R$ 4,00 | 50
+
+ |
+| **GN CÃO AD ME FRANGO & ARROZ SC 20KG** | R$ 380,00 | 1
+
+ |
+| **GN CÃO AD MP FRANGO & ARROZ SC 20KG** | R$ 380,00 | 1
+
+ |
+| **GUABINUCLEO FRANGOS CRESCIMENTO 50KG/T 25KG** | R$ 205,00 | 40
+
+ |
+| **GUABINUCLEO MATRIZES GESTANTES E LACTANTES 20KG** | R$ 140,00 | 2
+
+ |
+| **GUABINUCLEO POSTURA 50KG/T 25KG** | R$ 180,00 | 20
+
+ |
+| **GUABINUCLEO SUÍNOS EM CRESCIMENTO E TERMINAÇÃO 20KG** | R$ 120,00 | 30
+
+ |
+| **GUABIPHOS LACTAGE GOLD 6 30KG** | R$ 196,00 | 30
+
+ |
+| **GUABITECH IMPULSE 40 2-3MM 25KG** | R$ 135,00 | 10
+
+ |
+| **GUABITECH IMPULSE 45 0,8-1,0MM 25KG** | R$ 280,00 | 5
+
+ |
+| **HOT CAT MIX SEM CORANTES 10.1KG** | R$ 100,00 | 29
+
+ |
+| **KIDAN 25KG** | R$ 90,00 | 10
+
+ |
+| **MAGNUS T D SABOR CARNE 15KG** | R$ 100,00 | 80
+
+ |
+| **MAGNUS T D SABOR CARNE 20KG** | R$ 130,00 | 100
+
+ |
+| **MEL 300G** | R$ 20,00 | 5
+
+ |
+| **MEL 800G** | R$ 40,00 | 15
+
+ |
+| **MILHO AGRANEL** | R$ 3,00 | 75
+
+ |
+| **MILHO SC 25KG** | R$ 50,00 | 50
+
+ |
+| **MILHO SC 50KG** | R$ 78,00 | 153
+
+ |
+| **MISTURA CALOPSITA 10KG** | R$ 75,00 | 10
+
+ |
+| **MISTURA CANÁRIO 10KG** | R$ 100,00 | 5
+
+ |
+| **MISTURA GALEIRO MIX 10KG** | R$ 80,00 | 5
+
+ |
+| **MISTURA PAPAGAIO** | R$ 98,00 | 5
+
+ |
+| **OVOS CAIPIRA DÚZIA** | R$ 16,00 | 25
+
+ |
+| **PALHA DE ARROZ** | R$ 20,00 | 50
+
+ |
+| **PINGA ESTIVA 2L** | R$ 35,00 | 2
+
+ |
+| **PINGA TRIO SALINENSE 1L** | R$ 25,00 | 23
+
+ |
+| **PIRA EVOLUTION JUVENIL 2-3MM 25KG** | R$ 135,00 | 7
+
+ |
+| **PIRA GUABI 14MM 25KG** | R$ 100,00 | 20
+
+ |
+| **PIRA GUABI 4 A 6MM 25KG** | R$ 105,00 | 55
+
+ |
+| **PIRA GUABI 6 A 8MM 25KG** | R$ 105,00 | 5
+
+ |
+| **PIRA GUABI 9 A 11MM 25KG** | R$ 100,00 | 1
+
+ |
+| **POSTURA 20KG** | R$ 80,00 | 5
+
+ |
+| **POSTURA 5KG** | R$ 25,00 | 10
+
+ |
+| **PROEQUI MELAÇADA 40KG** | R$ 120,00 | 0
+
+ |
+| **PRONATURAL EXTRAOVO P 20KG** | R$ 80,00 | 40
+
+ |
+| **PRONATURAL EXTRAOVO T FD 5KG** | R$ 25,00 | 40
+
+ |
+| **PRONATURAL GORDOFRAN T 5KG** | R$ 25,00 | 40
+
+ |
+| **PRONATURAL PRÉ-AVE 20KG** | R$ 98,00 | 15
+
+ |
+| **PRONATURAL PRÉ-AVE PRÉ-INICIAL T 5KG** | R$ 30,00 | 40
+
+ |
+| **PRONATURAL PREFRAN T 5KG** | R$ 25,00 | 40
+
+ |
+| **QUATREE GOURMET GATOS ADULTOS PEIXE 10.1KG** | R$ 120,00 | 10
+
+ |
+| **QUATREE GOURMET GATOS ADULTOS PEIXE 1KG** | R$ 13,00 | 34
+
+ |
+| **QUATREE SELECT GATOS ADULTOS 10.1KG** | R$ 120,00 | 1
+
+ |
+| **QUATREE SUPREME GATOS CASTRADOS SALMÃO 10.1KG** | R$ 200,00 | 1
+
+ |
+| **QUIRELA ARROZ P/ CANJA AGRANEL** | R$ 5,00 | 30
+
+ |
+| **QUIRELA DE ARROZ 50KG** | R$ 130,00 | 11
+
+ |
+| **QUIRELA DE ARROZ AGRANEL** | R$ 4,00 | 45
+
+ |
+| **QUIRELA DE MILHO FINA 25KG** | R$ 50,00 | 43
+
+ |
+| **QUIRELA DE MILHO FINA 50KG** | R$ 85,00 | 38
+
+ |
+| **QUIRELA DE MILHO FINA AGRANEL** | R$ 3,00 | 48
+
+ |
+| **QUIRELA DE MILHO GROSSA 25KG** | R$ 50,00 | 20
+
+ |
+| **QUIRELA DE MILHO GROSSA 50KG** | R$ 90,00 | 41
+
+ |
+| **QUIRELA DE MILHO GROSSA AGRANEL** | R$ 3,00 | 23,32
+
+ |
+| **QUIRELA DE MILHO MÉDIA 25KG** | R$ 50,00 | 44
+
+ |
+| **QUIRELA DE MILHO MÉDIA 50KG** | R$ 85,00 | 44
+
+ |
+| **QUIRELA DE MILHO MÉDIA AGRANEL** | R$ 3,00 | 40
+
+ |
+| **QUIRELA DE MILHO PENEIRADA AGRANEL** | R$ 4,00 | 50
+
+ |
+| **QUIRELA DE MILHO PENEIRADA 25KG** | R$ 65,00 | 48
+
+ |
+| **RAÇÃO CACHORRO INSPIRA 15KG** | R$ 105,00 | 99
+
+ |
+| **RAÇÃO CACHORRO INSPIRA FILHOTE 10KG** | R$ 90,00 | 14
+
+ |
+| **RAÇÃO CACHORRO INSPIRA RP 10KG** | R$ 90,00 | 14
+
+ |
+| **RAÇÃO CACHORRO INSPIRA FILHOTE AGRANEL** | R$ 12,00 | 30
+
+ |
+| **RAÇÃO CACHORRO INSPIRA RG AGRANEL** | R$ 10,00 | 50
+
+ |
+| **RAÇÃO CACHORRO INSPIRA RP AGRANEL** | R$ 12,00 | 29
+
+ |
+| **RAÇÃO CACHORRO NATIVE 25KG** | R$ 115,00 | 10
+
+ |
+| **RAÇÃO CACHORRO NEW PET 18 15KG** | R$ 65,00 | 15
+
+ |
+| **RAÇÃO CACHORRO NEW PET 18 25KG** | R$ 105,00 | 29
+
+ |
+| **RAÇÃO CACHORRO NEW PET 18P AGRANEL** | R$ 6,00 | 50
+
+ |
+| **RAÇÃO CACHORRO NEW PET 21 15KG** | R$ 75,00 | 20
+
+ |
+| **RAÇÃO CACHORRO NEW PET 21 25KG** | R$ 125,00 | 20
+
+ |
+| **RAÇÃO CACHORRO PINGO 15KG** | R$ 60,00 | 76
+
+ |
+| **RAÇÃO EQUINOS 16% 40KG** | R$ 80,00 | 25
+
+ |
+| **RAÇÃO FR 25KG** | R$ 73,00 | 20
+
+ |
+| **RAÇÃO FR 40KG** | R$ 95,00 | 20
+
+ |
+| **RAÇÃO NATIVE GATO 15KG** | R$ 110,00 | 10
+
+ |
+| **RAÇÃO POSTURA 25KG** | R$ 80,00 | 24
+
+ |
+| **RAÇÃO SUÍNO 40KG** | R$ 95,00 | 20
+
+ |
+| **RAÇÃO SUÍNO LACTAÇÃO 40KG** | R$ 105,00 | 10
+
+ |
+| **RAÇÃO VACA LEITE 24% 40KG** | R$ 100,00 | 25
+
+ |
+| **SACO DE RÁFIA** | R$ 3,50 | 33.795
+
+ |
+| **SAL COMUM 25KG** | R$ 27,00 | 100
+
+ |
+| **SAL MINERAL ENGORDA V 30KG** | R$ 85,00 | 30
+
+ |
+| **SAL PROTEINADO DON NOVILHO TURBO 30KG** | R$ 85,00 | 45
+
+ |
+| **SILO DE MILHO** | R$ 17,00 | 90
+
+ |
+| **SPECIAL DOG AD CARNE 15KG** | R$ 100,00 | 20
+
+ |
+| **SPECIAL DOG AD CARNE 20KG** | R$ 130,00 | 35
+
+ |
