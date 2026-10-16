@@ -700,12 +700,13 @@
 
         .badge-pet { background-color: var(--accent); color: #fff; }
         .badge-agro { background-color: var(--primary-light); color: #fff; }
-        .badge-emporio { background-color: var(--secondary); color: #fff; }
+        .badge-graos { background-color: #8D6E63; color: #fff; }
+        .badge-emporio { background-color: #A0522D; color: #fff; }
 
         .product-image-container {
             position: relative;
             width: 100%;
-            height: 210px;
+            height: 220px;
             background-color: #F8F9FA;
             overflow: hidden;
         }
@@ -738,7 +739,7 @@
         }
 
         .product-title {
-            font-size: 1.12rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 8px;
@@ -746,11 +747,84 @@
         }
 
         .product-desc {
-            font-size: 0.85rem;
+            font-size: 0.86rem;
             color: var(--text-muted);
             line-height: 1.45;
+            margin-bottom: 14px;
+        }
+
+        /* Seletores de Variações nos Cards */
+        .product-variants-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             margin-bottom: 16px;
-            flex-grow: 1;
+            background: var(--surface-alt);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .variant-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .variant-group-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--secondary-dark);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .variant-options-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .variant-pill {
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+            line-height: 1.2;
+        }
+
+        .variant-pill:hover:not(.active) {
+            border-color: var(--primary);
+            background: #fdfdfd;
+        }
+
+        .variant-pill.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(30, 70, 32, 0.25);
+        }
+
+        .variant-selected-summary {
+            font-size: 0.74rem;
+            color: var(--primary-light);
+            font-weight: 600;
+            margin-top: 2px;
+            line-height: 1.3;
+        }
+
+        .variant-selected-summary strong {
+            color: var(--primary);
         }
 
         .product-pricing {
@@ -758,6 +832,7 @@
             align-items: baseline;
             gap: 6px;
             margin-bottom: 16px;
+            margin-top: auto;
         }
 
         .product-price-currency {
@@ -767,16 +842,28 @@
         }
 
         .product-price-value {
-            font-size: 1.45rem;
+            font-size: 1.55rem;
             font-weight: 800;
             color: var(--primary);
             font-family: 'Outfit', sans-serif;
+            transition: transform 0.2s ease, color 0.2s ease;
+            display: inline-block;
+        }
+
+        @keyframes pricePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); color: var(--accent); }
+            100% { transform: scale(1); }
+        }
+
+        .price-pulse {
+            animation: pricePulse 0.35s ease-out;
         }
 
         .product-unit {
             font-size: 0.8rem;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* Ações do Card de Produto */
@@ -1311,6 +1398,19 @@
             color: var(--primary);
             line-height: 1.3;
             margin-bottom: 3px;
+        }
+
+        .cart-item-variant {
+            font-size: 0.76rem;
+            color: var(--primary-light);
+            background-color: var(--surface-alt);
+            padding: 2px 7px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            line-height: 1.3;
+            border: 1px solid var(--border-light);
         }
 
         .cart-item-price {
@@ -1891,6 +1991,9 @@
                         <button class="tab-btn" data-category="agro">
                             <i class="fa-solid fa-wheat-awn"></i> Linha Agro & Criação
                         </button>
+                        <button class="tab-btn" data-category="graos">
+                            <i class="fa-solid fa-seedling"></i> Cereais & Grãos
+                        </button>
                         <button class="tab-btn" data-category="emporio">
                             <i class="fa-solid fa-leaf"></i> Empório & Artesanais
                         </button>
@@ -2193,208 +2296,555 @@
        ========================================================================== -->
     <script>
         // ==========================================================================
-        // 1. BANCO DE DADOS DE PRODUTOS (PREÇOS ZERADOS CONFORME INSTRUÇÃO)
+        // 1. BANCO DE DADOS DE PRODUTOS REAIS — CEREALISTA PANSANI
         // ==========================================================================
         const PRODUCTS = [
-            // --- LINHA PET ---
+            // ======================================================================
+            // LINHA PET
+            // ======================================================================
             {
-                id: 'pet-1',
-                name: 'Ração Golden Special Cães Adultos Frango e Carne',
+                id: 'pet-caes',
+                name: 'Ração Seca para Cães',
                 category: 'pet',
                 categoryLabel: 'Linha Pet',
-                unit: 'Saco 15kg',
-                price: 0.00,
-                desc: 'Alimento premium especial com ômegas 3 e 6 para pelos brilhantes e alta palatabilidade.',
-                image: 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600&auto=format&fit=crop&q=80'
+                desc: 'Alimento completo e balanceado para filhotes e cães adultos de todos os portes. Variedade de marcas consagradas, alta digestibilidade e nutrição de ponta.',
+                image: 'images/racao_caes.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'caes-special-15kg', brand: 'Special Dog', weight: '15kg', spec: 'Adulto Carne', price: 100.00 },
+                    { id: 'caes-special-20kg', brand: 'Special Dog', weight: '20kg', spec: 'Adulto Carne', price: 130.00 },
+                    { id: 'caes-magnus-15kg', brand: 'Magnus', weight: '15kg', spec: 'Todo Dia Carne', price: 100.00 },
+                    { id: 'caes-magnus-20kg', brand: 'Magnus', weight: '20kg', spec: 'Todo Dia Carne', price: 130.00 },
+                    { id: 'caes-guabi-medio-20kg', brand: 'Guabi Natural', weight: '20kg', spec: 'Adulto Médio Porte (Frango & Arroz)', price: 380.00 },
+                    { id: 'caes-guabi-pequeno-20kg', brand: 'Guabi Natural', weight: '20kg', spec: 'Adulto Pequeno Porte (Frango & Arroz)', price: 380.00 },
+                    { id: 'caes-inspira-15kg', brand: 'Inspira', weight: '15kg', spec: 'Adulto Original', price: 105.00 },
+                    { id: 'caes-inspira-filhote-10kg', brand: 'Inspira', weight: '10kg', spec: 'Filhote', price: 90.00 },
+                    { id: 'caes-inspira-filhote-granel', brand: 'Inspira', weight: 'A Granel (kg)', spec: 'Filhote', price: 12.00 },
+                    { id: 'caes-inspira-rp-10kg', brand: 'Inspira', weight: '10kg', spec: 'Raças Pequenas', price: 90.00 },
+                    { id: 'caes-inspira-rp-granel', brand: 'Inspira', weight: 'A Granel (kg)', spec: 'Raças Pequenas', price: 12.00 },
+                    { id: 'caes-inspira-rg-granel', brand: 'Inspira', weight: 'A Granel (kg)', spec: 'Raças Grandes', price: 10.00 },
+                    { id: 'caes-newpet-18-15kg', brand: 'New Pet', weight: '15kg', spec: '18% Proteína', price: 65.00 },
+                    { id: 'caes-newpet-18-25kg', brand: 'New Pet', weight: '25kg', spec: '18% Proteína', price: 105.00 },
+                    { id: 'caes-newpet-18-granel', brand: 'New Pet', weight: 'A Granel (kg)', spec: '18% Proteína', price: 6.00 },
+                    { id: 'caes-newpet-21-15kg', brand: 'New Pet', weight: '15kg', spec: '21% Proteína', price: 75.00 },
+                    { id: 'caes-newpet-21-25kg', brand: 'New Pet', weight: '25kg', spec: '21% Proteína', price: 125.00 },
+                    { id: 'caes-native-25kg', brand: 'Native', weight: '25kg', spec: 'Adulto', price: 115.00 },
+                    { id: 'caes-kidan-25kg', brand: 'Kidan', weight: '25kg', spec: 'Standard', price: 90.00 },
+                    { id: 'caes-pingo-15kg', brand: 'Pingo', weight: '15kg', spec: 'Econômica', price: 60.00 }
+                ]
             },
             {
-                id: 'pet-2',
-                name: 'Ração Premier Gatos Castrados Salmão',
+                id: 'pet-gatos',
+                name: 'Ração para Gatos',
                 category: 'pet',
                 categoryLabel: 'Linha Pet',
-                unit: 'Pacote 3kg',
-                price: 0.00,
-                desc: 'Nutrição super premium balanceada para controle de peso e trato urinário saudável.',
-                image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop&q=80'
+                desc: 'Nutrição completa para gatos adultos e castrados. Fórmulas ricas em aminoácidos essenciais, taurina e controle de pH urinário.',
+                image: 'images/racao_gatos.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'gatos-quatree-supreme-10kg', brand: 'Quatree Supreme', weight: '10.1kg', spec: 'Castrados Salmão', price: 200.00 },
+                    { id: 'gatos-quatree-select-10kg', brand: 'Quatree Select', weight: '10.1kg', spec: 'Gatos Adultos', price: 120.00 },
+                    { id: 'gatos-quatree-gourmet-1kg', brand: 'Quatree Gourmet', weight: '1kg', spec: 'Adultos Peixe', price: 13.00 },
+                    { id: 'gatos-quatree-gourmet-10kg', brand: 'Quatree Gourmet', weight: '10.1kg', spec: 'Adultos Peixe', price: 120.00 },
+                    { id: 'gatos-hotcat-10kg', brand: 'Hot Cat', weight: '10.1kg', spec: 'Mix Sem Corantes', price: 100.00 },
+                    { id: 'gatos-native-15kg', brand: 'Native', weight: '15kg', spec: 'Gatos Adultos', price: 110.00 }
+                ]
             },
             {
-                id: 'pet-3',
-                name: 'Ração Pedigree Nutrição Essencial Cães Médios',
+                id: 'pet-passaros',
+                name: 'Mistura Especial para Pássaros',
                 category: 'pet',
                 categoryLabel: 'Linha Pet',
-                unit: 'Saco 15kg',
-                price: 0.00,
-                desc: 'Com prebióticos para digestão saudável e cálcio para ossos fortes.',
-                image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&auto=format&fit=crop&q=80'
+                desc: 'Sementes limpas, ventiladas e selecionadas para calopsitas, canários, papagaios e passeriformes.',
+                image: 'images/sementes_passaros.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'passaros-calopsita-10kg', weight: '10kg', spec: 'Calopsita Especial', price: 75.00 },
+                    { id: 'passaros-canario-10kg', weight: '10kg', spec: 'Canário Selecionado', price: 100.00 },
+                    { id: 'passaros-galeiro-10kg', weight: '10kg', spec: 'Galeiro Mix', price: 80.00 },
+                    { id: 'passaros-papagaio', weight: 'Saco Econômico', spec: 'Papagaio Nobre', price: 98.00 }
+                ]
             },
             {
-                id: 'pet-4',
-                name: 'Mistura Especial para Calopsitas e Pássaros',
+                id: 'pet-coelhos',
+                name: 'Ração Peletizada para Coelhos',
                 category: 'pet',
                 categoryLabel: 'Linha Pet',
-                unit: 'Pacote 1kg',
-                price: 0.00,
-                desc: 'Sementes limpas, selecionadas e ricas em vitaminas para pássaros saudáveis.',
-                image: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: 'pet-5',
-                name: 'Ração Balanceada Peletizada para Coelhos',
-                category: 'pet',
-                categoryLabel: 'Linha Pet',
-                unit: 'Pacote 1kg',
-                price: 0.00,
-                desc: 'Fibras nobres e alfafa para roedores e pequenos animais domésticos.',
-                image: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: 'pet-6',
-                name: 'Ração Alcon Peixes Ornamentais em Flocos',
-                category: 'pet',
-                categoryLabel: 'Linha Pet',
-                unit: 'Pote 100g',
-                price: 0.00,
-                desc: 'Alimento completo flutuante de alta aceitação para peixes de aquário.',
-                image: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600&auto=format&fit=crop&q=80'
+                desc: 'Alimento completo peletizado enriquecido com alfafa e fibras nobres para coelhos e roedores.',
+                image: 'images/racao_coelhos.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'coelhos-5kg', weight: '5kg', spec: 'Peletizada', price: 20.00 },
+                    { id: 'coelhos-20kg', weight: '20kg', spec: 'Peletizada', price: 68.00 }
+                ]
             },
 
-            // --- LINHA AGRO & CRIAÇÃO ---
+            // ======================================================================
+            // LINHA AGRO & CRIAÇÃO
+            // ======================================================================
             {
-                id: 'agro-1',
-                name: 'Milho Grão Limpo Selecionado (Saca)',
+                id: 'agro-equinos',
+                name: 'Ração para Equinos (Cavalos)',
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
-                unit: 'Saca 50kg',
-                price: 0.00,
-                desc: 'Milho seco de alta pureza, ideal para alimentação de galinhas, suínos e cavalos.',
-                image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop&q=80'
+                desc: 'Formulação balanceada, peletizada e melaçada para cavalos de passeio, lida, cavalgadas e alta exigência física.',
+                image: 'images/racao_equinos.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'equinos-equestre-40kg', brand: 'Equestre Lazer', weight: '40kg', spec: 'Manutenção e Passeio', price: 105.00 },
+                    { id: 'equinos-proequi-40kg', brand: 'Proequi Melaçada', weight: '40kg', spec: 'Peletizada com Melaço', price: 120.00 },
+                    { id: 'equinos-16p-40kg', brand: 'Ração Equinos 16%', weight: '40kg', spec: '16% de Proteína', price: 80.00 },
+                    { id: 'equinos-fr-25kg', brand: 'Ração FR', weight: '25kg', spec: 'Nutrição Balanceada', price: 73.00 },
+                    { id: 'equinos-fr-40kg', brand: 'Ração FR', weight: '40kg', spec: 'Nutrição Balanceada', price: 95.00 }
+                ]
             },
             {
-                id: 'agro-2',
-                name: 'Milho Moído / Quirera Fina a Granel',
+                id: 'agro-bovinos',
+                name: 'Nutrição, Silagem e Suplementação Bovina',
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
-                unit: 'Granel (Preço por kg)',
-                price: 0.00,
-                desc: 'Quirera pura para pintinhos e aves jovens. Compre a quantidade que desejar!',
-                image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80'
+                desc: 'Suplementos minerais, proteinados, ração para vacas leiteiras e silagem ensacada de milho para o rebanho.',
+                image: 'images/racao_bovinos.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'bovinos-leite-40kg', brand: 'Ração Vaca Leite 24%', weight: '40kg', spec: 'Alta Produção', price: 100.00 },
+                    { id: 'bovinos-don-novilho-30kg', brand: 'Don Novilho Turbo', weight: '30kg', spec: 'Sal Proteinado', price: 85.00 },
+                    { id: 'bovinos-sal-engorda-30kg', brand: 'Sal Mineral Engorda V', weight: '30kg', spec: 'Gado de Corte', price: 85.00 },
+                    { id: 'bovinos-lactage-30kg', brand: 'Guabiphos Lactage Gold 6', weight: '30kg', spec: 'Mineral Premium', price: 196.00 },
+                    { id: 'bovinos-guabinucleo-matrizes-20kg', brand: 'Guabinucleo Matrizes', weight: '20kg', spec: 'Gestantes e Lactantes', price: 140.00 },
+                    { id: 'bovinos-sal-comum-25kg', brand: 'Sal Comum Agropecuário', weight: '25kg', spec: 'Sal Branco Moído', price: 27.00 },
+                    { id: 'bovinos-silo-milho', brand: 'Silo de Milho', weight: 'Saco', spec: 'Silagem Fresca', price: 17.00 }
+                ]
             },
             {
-                id: 'agro-3',
-                name: 'Ração para Equinos Alta Performance',
+                id: 'agro-suinos',
+                name: 'Ração e Suplementos para Suínos',
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
-                unit: 'Saco 40kg',
-                price: 0.00,
-                desc: 'Ração peletizada e melaçada com leveduras para cavalos de trabalho e hipismo.',
-                image: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80'
+                desc: 'Nutrição de precisão para suínos em fase de crescimento, engorda, terminação e suporte para matrizes lactantes.',
+                image: 'images/racao_suinos.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'suinos-40kg', brand: 'Ração Suíno Crescimento', weight: '40kg', spec: 'Crescimento e Terminação', price: 95.00 },
+                    { id: 'suinos-lactacao-40kg', brand: 'Ração Suíno Lactação', weight: '40kg', spec: 'Matrizes em Lactação', price: 105.00 },
+                    { id: 'suinos-guabinucleo-20kg', brand: 'Guabinucleo Suínos', weight: '20kg', spec: 'Crescimento e Terminação', price: 120.00 }
+                ]
             },
             {
-                id: 'agro-4',
-                name: 'Ração para Bovinos de Leite e Corte',
+                id: 'agro-frangos',
+                name: 'Ração para Frangos e Aves de Corte',
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
-                unit: 'Saco 40kg',
-                price: 0.00,
-                desc: 'Mistura rica em minerais e proteínas para aumento da produção leiteira e ganho de peso.',
-                image: 'https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=600&auto=format&fit=crop&q=80'
+                desc: 'Nutrição para pintinhos, frangos em crescimento e terminação, com opções de sacarias práticas e núcleos de alta conversão.',
+                image: 'images/racao_aves_corte.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'frango-inicial-5kg', brand: 'Linha Padrão', weight: '5kg', spec: 'Inicial Pintinhos', price: 25.00 },
+                    { id: 'frango-inicial-20kg', brand: 'Linha Padrão', weight: '20kg', spec: 'Inicial Pintinhos', price: 85.00 },
+                    { id: 'frango-engorda-5kg', brand: 'Linha Padrão', weight: '5kg', spec: 'Engorda / Final', price: 25.00 },
+                    { id: 'frango-engorda-20kg', brand: 'Linha Padrão', weight: '20kg', spec: 'Engorda / Final', price: 80.00 },
+                    { id: 'frango-pronatural-preave-preini-5kg', brand: 'ProNatural', weight: '5kg', spec: 'Pré-Ave Pré-Inicial', price: 30.00 },
+                    { id: 'frango-pronatural-preave-20kg', brand: 'ProNatural', weight: '20kg', spec: 'Pré-Ave', price: 98.00 },
+                    { id: 'frango-pronatural-prefran-5kg', brand: 'ProNatural', weight: '5kg', spec: 'Prefran', price: 25.00 },
+                    { id: 'frango-pronatural-gordofran-5kg', brand: 'ProNatural', weight: '5kg', spec: 'Gordofran', price: 25.00 },
+                    { id: 'frango-guabinucleo-25kg', brand: 'Guabinucleo', weight: '25kg', spec: 'Frangos Crescimento (50kg/t)', price: 205.00 }
+                ]
             },
             {
-                id: 'agro-5',
-                name: 'Ração para Aves Poedeiras (Postura)',
+                id: 'agro-postura',
+                name: 'Ração para Galinhas Poedeiras (Postura)',
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
-                unit: 'Saco 20kg',
-                price: 0.00,
-                desc: 'Com cálcio e fósforo quelatados para casca resistente e gema avermelhada.',
-                image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&auto=format&fit=crop&q=80'
+                desc: 'Formulação rica em cálcio, fósforo e aminoácidos para casca reforçada e postura constante.',
+                image: 'images/racao_poedeiras.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'postura-5kg', brand: 'Linha Padrão', weight: '5kg', spec: 'Postura Equilibrada', price: 25.00 },
+                    { id: 'postura-20kg', brand: 'Linha Padrão', weight: '20kg', spec: 'Postura Equilibrada', price: 80.00 },
+                    { id: 'postura-25kg', brand: 'Linha Padrão', weight: '25kg', spec: 'Postura Equilibrada', price: 80.00 },
+                    { id: 'postura-extraovo-5kg', brand: 'ProNatural', weight: '5kg', spec: 'Extraovo T FD', price: 25.00 },
+                    { id: 'postura-extraovo-20kg', brand: 'ProNatural', weight: '20kg', spec: 'Extraovo P', price: 80.00 },
+                    { id: 'postura-guabinucleo-25kg', brand: 'Guabinucleo', weight: '25kg', spec: 'Postura (50kg/t)', price: 180.00 }
+                ]
             },
             {
-                id: 'agro-6',
-                name: 'Ração para Suínos Crescimento e Engorda',
+                id: 'agro-peixes',
+                name: 'Ração para Peixes (Piscicultura)',
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
-                unit: 'Saco 40kg',
-                price: 0.00,
-                desc: 'Formulação específica para conversão alimentar eficiente na criação de porcos.',
-                image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: 'agro-7',
-                name: 'Ração para Peixes Piscicultura Flutuante',
-                category: 'agro',
-                categoryLabel: 'Linha Agro',
-                unit: 'Saco 10kg',
-                price: 0.00,
-                desc: 'Extrusada, flutua na água garantindo consumo total por tilápias e carpas.',
-                image: 'https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=600&auto=format&fit=crop&q=80'
+                desc: 'Ração extrusada de alta flutuabilidade para tilápias, carpas e alevinos com máxima absorção proteica.',
+                image: 'images/racao_peixes.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'peixes-impulse45-25kg', brand: 'GuabiTech Impulse 45%', weight: '25kg', spec: '0,8 a 1,0mm (Alevinos)', price: 280.00 },
+                    { id: 'peixes-impulse40-25kg', brand: 'GuabiTech Impulse 40%', weight: '25kg', spec: '2 a 3mm (Juvenil)', price: 135.00 },
+                    { id: 'peixes-piraevo-25kg', brand: 'Pira Evolution Juvenil', weight: '25kg', spec: '2 a 3mm (Juvenil)', price: 135.00 },
+                    { id: 'peixes-piraguabi-4a6-25kg', brand: 'Pira Guabi', weight: '25kg', spec: '4 a 6mm', price: 105.00 },
+                    { id: 'peixes-piraguabi-6a8-25kg', brand: 'Pira Guabi', weight: '25kg', spec: '6 a 8mm', price: 105.00 },
+                    { id: 'peixes-piraguabi-9a11-25kg', brand: 'Pira Guabi', weight: '25kg', spec: '9 a 11mm', price: 100.00 },
+                    { id: 'peixes-piraguabi-14-25kg', brand: 'Pira Guabi', weight: '25kg', spec: '14mm', price: 100.00 }
+                ]
             },
 
-            // --- EMPÓRIO & NATURAIS DO PRODUTOR ---
+            // ======================================================================
+            // CEREAIS & GRÃOS A GRANEL E SACARIA
+            // ======================================================================
             {
-                id: 'emp-1',
-                name: 'Mel Puro de Abelha Silvestre (Vidro)',
+                id: 'graos-milho',
+                name: 'Milho em Grão Seco e Limpo',
+                category: 'graos',
+                categoryLabel: 'Cereais & Grãos',
+                desc: 'Milho amarelo selecionado, seco no ponto ideal e de alta pureza. Excelente para aves, suínos e equinos.',
+                image: 'images/milho_grao.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'milho-granel', weight: 'A Granel (kg)', spec: 'Grão Inteiro', price: 3.00 },
+                    { id: 'milho-sc25kg', weight: 'Saco 25kg', spec: 'Grão Inteiro', price: 50.00 },
+                    { id: 'milho-sc50kg', weight: 'Saco 50kg', spec: 'Grão Inteiro', price: 78.00 }
+                ]
+            },
+            {
+                id: 'graos-quirera-milho',
+                name: 'Quirera de Milho (Quirela)',
+                category: 'graos',
+                categoryLabel: 'Cereais & Grãos',
+                desc: 'Milho quebrado e calibrado em diversas granulometrias para atender pintinhos, aves adultas e misturas caseiras.',
+                image: 'images/quirera_milho.jpg',
+                hasVariants: true,
+                variants: [
+                    { id: 'quirera-fina-granel', weight: 'A Granel (kg)', spec: 'Fina', price: 3.00 },
+                    { id: 'quirera-fina-25kg', weight: 'Saco 25kg', spec: 'Fina', price: 50.00 },
+                    { id: 'quirera-fina-50kg', weight: 'Saco 50kg', spec: 'Fina', price: 85.00 },
+                    { id: 'quirera-media-granel', weight: 'A Granel (kg)', spec: 'Média', price: 3.00 },
+                    { id: 'quirera-media-25kg', weight: 'Saco 25kg', spec: 'Média', price: 50.00 },
+                    { id: 'quirera-media-50kg', weight: 'Saco 50kg', spec: 'Média', price: 85.00 },
+                    { id: 'quirera-grossa-granel', weight: 'A Granel (kg)', spec: 'Grossa', price: 3.00 },
+                    { id: 'quirera-grossa-25kg', weight: 'Saco 25kg', spec: 'Grossa', price: 50.00 },
+                    { id: 'quirera-grossa-50kg', weight: 'Saco 50kg', spec: 'Grossa', price: 90.00 },
+                    { id: 'quirera-peneirada-granel', weight: 'A Granel (kg)', spec: 'Peneirada Limpa', price: 4.00 },
+                    { id: 'quirera-peneirada-25kg', weight: 'Saco 25kg', spec: 'Peneirada Limpa', price: 65.00 }
+                ]
+            },
+            {
+                id: 'graos-fuba',
+                name: 'Fubá de Milho Puro',
+                category: 'graos',
+                categoryLabel: 'Cereais & Grãos',
+                desc: 'Fubá moído fino artesanal da roça, puro, amarelo e sem conservantes, vendido a granel.',
+                image: 'images/fuba_milho.jpg',
+                hasVariants: false,
+                price: 4.00,
+                unit: 'A Granel (kg)'
+            },
+            {
+                id: 'graos-arroz',
+                name: 'Subprodutos e Derivados de Arroz',
+                category: 'graos',
+                categoryLabel: 'Cereais & Grãos',
+                desc: 'Quirera de arroz para canja ou nutrição animal, farelo rico e palha de arroz para cama e forração.',
+                image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&auto=format&fit=crop&q=80',
+                hasVariants: true,
+                variants: [
+                    { id: 'arroz-quirela-granel', brand: 'Quirela de Arroz', weight: 'A Granel (kg)', spec: 'Nutrição Animal', price: 4.00 },
+                    { id: 'arroz-quirela-50kg', brand: 'Quirela de Arroz', weight: 'Saco 50kg', spec: 'Nutrição Animal', price: 130.00 },
+                    { id: 'arroz-canja-granel', brand: 'Quirela p/ Canja', weight: 'A Granel (kg)', spec: 'Especial Culinária', price: 5.00 },
+                    { id: 'arroz-farelo-granel', brand: 'Farelo de Arroz', weight: 'A Granel (kg)', spec: 'Nutritivo', price: 3.00 },
+                    { id: 'arroz-farelo-30kg', brand: 'Farelo de Arroz', weight: 'Saco 30kg', spec: 'Nutritivo', price: 55.00 },
+                    { id: 'arroz-palha', brand: 'Palha de Arroz', weight: 'Saco', spec: 'Cama / Forragem', price: 20.00 }
+                ]
+            },
+            {
+                id: 'graos-soja',
+                name: 'Derivados de Soja (Farelo e Casquinha)',
+                category: 'graos',
+                categoryLabel: 'Cereais & Grãos',
+                desc: 'Farelo de soja com alto teor de proteína nobre e casquinha de soja rica em fibras digestíveis.',
+                image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&auto=format&fit=crop&q=80',
+                hasVariants: true,
+                variants: [
+                    { id: 'soja-farelo-granel', brand: 'Farelo de Soja', weight: 'A Granel (kg)', spec: 'Alto Teor Proteico', price: 4.00 },
+                    { id: 'soja-farelo-50kg', brand: 'Farelo de Soja', weight: 'Saco 50kg', spec: 'Alto Teor Proteico', price: 145.00 },
+                    { id: 'soja-casquinha-20kg', brand: 'Casquinha de Soja', weight: 'Saco 20kg', spec: 'Rica em Fibras', price: 35.00 }
+                ]
+            },
+            {
+                id: 'graos-rafia',
+                name: 'Saco de Ráfia Reforçado',
+                category: 'graos',
+                categoryLabel: 'Cereais & Grãos',
+                desc: 'Sacaria de ráfia reforçada virgem, ideal para ensaque de cereais, rações, grãos, silagem e transporte seguro.',
+                image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&auto=format&fit=crop&q=80',
+                hasVariants: false,
+                price: 3.50,
+                unit: 'Unidade'
+            },
+
+            // ======================================================================
+            // EMPÓRIO CAIPIRA & ARTESANAIS
+            // ======================================================================
+            {
+                id: 'emp-cafe',
+                name: 'Café Artesanal de Franca',
                 category: 'emporio',
-                categoryLabel: 'Empório Artesanal',
-                unit: 'Pote 1kg',
-                price: 0.00,
-                desc: 'Mel legítimo e cru, colhido diretamente nas matas e floradas da região de Franca.',
-                image: 'https://images.unsplash.com/photo-1471943311424-646960669fbc?w=600&auto=format&fit=crop&q=80'
+                categoryLabel: 'Empório Caipira',
+                desc: 'Grãos 100% arábica da Alta Mogiana, torrado e moído artesanalmente, com aroma marcante e sabor encorpado.',
+                image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&auto=format&fit=crop&q=80',
+                hasVariants: false,
+                price: 30.00,
+                unit: 'Pacote 500g'
             },
             {
-                id: 'emp-2',
+                id: 'emp-mel',
+                name: 'Mel Puro de Abelha Silvestre',
+                category: 'emporio',
+                categoryLabel: 'Empório Caipira',
+                desc: 'Mel legítimo e cru, colhido diretamente nas matas e floradas da região de Franca.',
+                image: 'https://images.unsplash.com/photo-1471943311424-646960669fbc?w=800&auto=format&fit=crop&q=80',
+                hasVariants: true,
+                variants: [
+                    { id: 'mel-300g', weight: 'Pote 300g', spec: 'Mel Puro', price: 20.00 },
+                    { id: 'mel-800g', weight: 'Pote 800g', spec: 'Mel Puro', price: 40.00 }
+                ]
+            },
+            {
+                id: 'emp-pinga',
+                name: 'Cachaça / Pinga Artesanal de Alambique',
+                category: 'emporio',
+                categoryLabel: 'Empório Caipira',
+                desc: 'Destilada em alambique tradicional de cobre com descanso em tonéis nobres, trazendo o legítimo sabor caipira.',
+                image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&auto=format&fit=crop&q=80',
+                hasVariants: true,
+                variants: [
+                    { id: 'pinga-trio-1l', brand: 'Trio Salinense', weight: 'Garrafa 1L', spec: 'Alambique Tradicional', price: 25.00 },
+                    { id: 'pinga-estiva-2l', brand: 'Pinga Estiva', weight: 'Garrafão 2L', spec: 'Alambique Tradicional', price: 35.00 }
+                ]
+            },
+            {
+                id: 'emp-ovos',
                 name: 'Ovos Caipiras Frescos do Dia',
                 category: 'emporio',
-                categoryLabel: 'Empório Artesanal',
-                unit: 'Cartela 30 ovos',
-                price: 0.00,
-                desc: 'Ovos de galinhas criadas soltas, com gema intensa e alto valor nutritivo.',
-                image: 'https://images.unsplash.com/photo-1516448620398-c5f44bf9f441?w=600&auto=format&fit=crop&q=80'
+                categoryLabel: 'Empório Caipira',
+                desc: 'Ovos de galinhas criadas soltas, com gema avermelhada intensa, alto valor nutritivo e frescor diário.',
+                image: 'https://images.unsplash.com/photo-1516448620398-c5f44bf9f441?w=800&auto=format&fit=crop&q=80',
+                hasVariants: false,
+                price: 16.00,
+                unit: 'Dúzia fresca'
             },
             {
-                id: 'emp-3',
-                name: 'Café Artesanal Torrado e Moído de Franca',
+                id: 'emp-carvao',
+                name: 'Carvão Vegetal Selecionado',
                 category: 'emporio',
-                categoryLabel: 'Empório Artesanal',
-                unit: 'Pacote 500g',
-                price: 0.00,
-                desc: 'Grãos 100% arábica da Alta Mogiana, encorpado, com aroma marcante e fresquinho.',
-                image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: 'emp-4',
-                name: 'Cachaça Artesanal Envelhecida em Carvalho',
-                category: 'emporio',
-                categoryLabel: 'Empório Artesanal',
-                unit: 'Garrafa 900ml',
-                price: 0.00,
-                desc: 'Destilada em alambique de cobre tradicional e envelhecida em barris de carvalho.',
-                image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: 'emp-5',
-                name: 'Extrato Puro de Própolis Verde em Gotas',
-                category: 'emporio',
-                categoryLabel: 'Empório Artesanal',
-                unit: 'Frasco 30ml',
-                price: 0.00,
-                desc: 'Concentração alcoólica de própolis verde para fortalecimento da imunidade natural.',
-                image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: 'emp-6',
-                name: 'Queijo Canastra Meia Cura Artesanal',
-                category: 'emporio',
-                categoryLabel: 'Empório Artesanal',
-                unit: 'Peça ~800g',
-                price: 0.00,
-                desc: 'Produzido com leite cru por produtores tradicionais. Textura macia e sabor autêntico.',
-                image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=600&auto=format&fit=crop&q=80'
+                categoryLabel: 'Empório Caipira',
+                desc: 'Carvão vegetal graúdo de alta densidade e queima uniforme, sem resíduos e com brasa duradoura.',
+                image: 'https://images.unsplash.com/photo-1542385151-efd9000785a0?w=800&auto=format&fit=crop&q=80',
+                hasVariants: false,
+                price: 40.00,
+                unit: 'Saco 10kg'
             }
         ];
 
         // ==========================================================================
-        // 2. ESTADO DO CARRINHO (PERSISTÊNCIA EM LOCALSTORAGE)
+        // 2. GERENCIAMENTO DE VARIAÇÕES (Marca -> Peso -> Características)
+        // ==========================================================================
+        const productSelections = {};
+
+        function initProductSelections() {
+            PRODUCTS.forEach(prod => {
+                if (!prod.hasVariants || !prod.variants || prod.variants.length === 0) return;
+                if (!productSelections[prod.id]) {
+                    const first = prod.variants[0];
+                    productSelections[prod.id] = {
+                        brand: first.brand || null,
+                        weight: first.weight || null,
+                        spec: first.spec || null
+                    };
+                }
+            });
+        }
+
+        function getActiveVariant(prod) {
+            if (!prod.hasVariants || !prod.variants || prod.variants.length === 0) return null;
+            const sel = productSelections[prod.id] || {};
+            
+            let matches = prod.variants;
+            if (sel.brand) {
+                const bMatches = matches.filter(v => v.brand === sel.brand);
+                if (bMatches.length > 0) matches = bMatches;
+            }
+            if (sel.weight) {
+                const wMatches = matches.filter(v => v.weight === sel.weight);
+                if (wMatches.length > 0) matches = wMatches;
+            }
+            if (sel.spec) {
+                const sMatches = matches.filter(v => v.spec === sel.spec);
+                if (sMatches.length > 0) matches = sMatches;
+            }
+            return matches[0] || prod.variants[0];
+        }
+
+        function selectProductVariant(prodId, dimension, value) {
+            const prod = PRODUCTS.find(p => p.id === prodId);
+            if (!prod || !prod.hasVariants) return;
+
+            if (!productSelections[prodId]) productSelections[prodId] = {};
+            const sel = productSelections[prodId];
+            sel[dimension] = value;
+
+            // Se mudou a Marca, valida se o Peso e a Spec atuais existem para ela
+            const forBrand = prod.variants.filter(v => !sel.brand || v.brand === sel.brand);
+            const availWeights = [...new Set(forBrand.map(v => v.weight).filter(Boolean))];
+            if (availWeights.length > 0 && (!sel.weight || !availWeights.includes(sel.weight))) {
+                sel.weight = availWeights[0];
+            }
+
+            const forWeight = forBrand.filter(v => !sel.weight || v.weight === sel.weight);
+            const availSpecs = [...new Set(forWeight.map(v => v.spec).filter(Boolean))];
+            if (availSpecs.length > 0 && (!sel.spec || !availSpecs.includes(sel.spec))) {
+                sel.spec = availSpecs[0];
+            }
+
+            updateProductCardDOM(prodId);
+        }
+
+        function updateProductCardDOM(prodId) {
+            const card = document.querySelector(`.product-card[data-id="${prodId}"]`);
+            if (!card) return;
+            const prod = PRODUCTS.find(p => p.id === prodId);
+            if (!prod) return;
+
+            const active = getActiveVariant(prod);
+            if (!active) return;
+
+            // Atualiza o bloco de seletores
+            const variantsContainer = card.querySelector('.product-variants-container');
+            if (variantsContainer) {
+                variantsContainer.outerHTML = renderVariantsMarkup(prod);
+            }
+
+            // Atualiza preço com animação suave
+            const priceValEl = card.querySelector('.product-price-value');
+            if (priceValEl) {
+                priceValEl.textContent = formatMoney(active.price);
+                priceValEl.classList.remove('price-pulse');
+                void priceValEl.offsetWidth; // Dispara reflow
+                priceValEl.classList.add('price-pulse');
+            }
+
+            // Atualiza unidades
+            const unitEl = card.querySelector('.product-unit');
+            if (unitEl) {
+                unitEl.textContent = `/ ${active.weight || prod.unit}`;
+            }
+
+            const subCatEl = card.querySelector('.product-category-sub');
+            if (subCatEl) {
+                subCatEl.textContent = active.weight || prod.unit;
+            }
+        }
+
+        function renderVariantsMarkup(prod) {
+            if (!prod.hasVariants || !prod.variants) return '';
+
+            const active = getActiveVariant(prod);
+            const sel = productSelections[prod.id] || {};
+            const activeBrand = active.brand || sel.brand;
+            const activeWeight = active.weight || sel.weight;
+            const activeSpec = active.spec || sel.spec;
+
+            // 1. Marcas disponíveis
+            const brands = [...new Set(prod.variants.map(v => v.brand).filter(Boolean))];
+
+            // Variantes para a marca ativa
+            const forBrand = brands.length > 0
+                ? prod.variants.filter(v => v.brand === activeBrand)
+                : prod.variants;
+
+            // 2. Pesos disponíveis para essa marca
+            const weights = [...new Set(forBrand.map(v => v.weight).filter(Boolean))];
+
+            // Variantes para esse peso
+            const forWeight = weights.length > 0
+                ? forBrand.filter(v => v.weight === activeWeight)
+                : forBrand;
+
+            // 3. Características / Especificações disponíveis
+            const specs = [...new Set(forWeight.map(v => v.spec).filter(Boolean))];
+
+            let html = `<div class="product-variants-container">`;
+
+            // Marca (se houver variação de marca)
+            if (brands.length > 1 || (brands.length === 1 && brands[0])) {
+                html += `
+                    <div class="variant-group">
+                        <div class="variant-group-label">
+                            <i class="fa-solid fa-tag"></i> 1. Marca
+                        </div>
+                        <div class="variant-options-list">
+                            ${brands.map(b => `
+                                <button type="button" 
+                                        class="variant-pill ${b === activeBrand ? 'active' : ''}"
+                                        onclick="selectProductVariant('${prod.id}', 'brand', '${escapeHtml(b)}')">
+                                    ${escapeHtml(b)}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Peso / Embalagem
+            if (weights.length > 0) {
+                html += `
+                    <div class="variant-group">
+                        <div class="variant-group-label">
+                            <i class="fa-solid fa-weight-hanging"></i> 2. Peso / Tamanho
+                        </div>
+                        <div class="variant-options-list">
+                            ${weights.map(w => `
+                                <button type="button" 
+                                        class="variant-pill ${w === activeWeight ? 'active' : ''}"
+                                        onclick="selectProductVariant('${prod.id}', 'weight', '${escapeHtml(w)}')">
+                                    ${escapeHtml(w)}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Especificação / Proteína (se houver)
+            if (specs.length > 1 || (specs.length === 1 && specs[0])) {
+                html += `
+                    <div class="variant-group">
+                        <div class="variant-group-label">
+                            <i class="fa-solid fa-sliders"></i> 3. Tipo / Proteína
+                        </div>
+                        <div class="variant-options-list">
+                            ${specs.map(s => `
+                                <button type="button" 
+                                        class="variant-pill ${s === activeSpec ? 'active' : ''}"
+                                        onclick="selectProductVariant('${prod.id}', 'spec', '${escapeHtml(s)}')">
+                                    ${escapeHtml(s)}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Resumo
+            const summaryParts = [active.brand, active.weight, active.spec].filter(Boolean);
+            html += `
+                <div class="variant-selected-summary">
+                    <i class="fa-solid fa-check"></i> Selecionado: <strong>${escapeHtml(summaryParts.join(' • '))}</strong>
+                </div>
+            </div>`;
+
+            return html;
+        }
+
+        // ==========================================================================
+        // 3. ESTADO DO CARRINHO (PERSISTÊNCIA EM LOCALSTORAGE)
         // ==========================================================================
         const CART_STORAGE_KEY = 'pansani_cart_v1';
         let cart = loadCartFromStorage();
@@ -2402,13 +2852,7 @@
         function loadCartFromStorage() {
             try {
                 const stored = localStorage.getItem(CART_STORAGE_KEY);
-                let items = stored ? JSON.parse(stored) : [];
-                // Sincroniza preços atuais dos produtos (zerados conforme pedido)
-                items.forEach(it => {
-                    const found = PRODUCTS.find(p => p.id === it.id);
-                    if (found) it.price = found.price;
-                });
-                return items;
+                return stored ? JSON.parse(stored) : [];
             } catch (e) {
                 console.error('Erro ao ler carrinho do localStorage', e);
                 return [];
@@ -2433,7 +2877,7 @@
         }
 
         // ==========================================================================
-        // 3. RENDERIZAÇÃO DA VITRINE DE PRODUTOS
+        // 4. RENDERIZAÇÃO DA VITRINE DE PRODUTOS
         // ==========================================================================
         const productsGrid = document.getElementById('productsGrid');
         const categoryTabs = document.getElementById('categoryTabs');
@@ -2448,7 +2892,12 @@
                 const matchSearch = searchQuery === '' || 
                     prod.name.toLowerCase().includes(searchQuery) ||
                     prod.desc.toLowerCase().includes(searchQuery) ||
-                    prod.unit.toLowerCase().includes(searchQuery);
+                    (prod.unit && prod.unit.toLowerCase().includes(searchQuery)) ||
+                    (prod.variants && prod.variants.some(v => 
+                        (v.brand && v.brand.toLowerCase().includes(searchQuery)) ||
+                        (v.weight && v.weight.toLowerCase().includes(searchQuery)) ||
+                        (v.spec && v.spec.toLowerCase().includes(searchQuery))
+                    ));
                 return matchCategory && matchSearch;
             });
 
@@ -2467,8 +2916,13 @@
 
             productsGrid.innerHTML = filtered.map(prod => {
                 const badgeClass = prod.category === 'pet' ? 'badge-pet' : 
-                                   (prod.category === 'agro' ? 'badge-agro' : 'badge-emporio');
-                
+                                   (prod.category === 'agro' ? 'badge-agro' : 
+                                   (prod.category === 'graos' ? 'badge-graos' : 'badge-emporio'));
+
+                const active = getActiveVariant(prod);
+                const displayPrice = active ? active.price : prod.price;
+                const displayUnit = active ? (active.weight || prod.unit) : prod.unit;
+
                 return `
                     <article class="product-card" data-id="${prod.id}">
                         <span class="product-badge-corner ${badgeClass}">${prod.categoryLabel}</span>
@@ -2476,14 +2930,16 @@
                             <img src="${prod.image}" alt="${escapeHtml(prod.name)}" loading="lazy" onerror="this.onerror=null; this.src='about-image.jpg';">
                         </div>
                         <div class="product-details">
-                            <span class="product-category-sub">${prod.unit}</span>
+                            <span class="product-category-sub">${escapeHtml(displayUnit)}</span>
                             <h3 class="product-title">${escapeHtml(prod.name)}</h3>
                             <p class="product-desc">${escapeHtml(prod.desc)}</p>
                             
+                            ${prod.hasVariants ? renderVariantsMarkup(prod) : ''}
+
                             <div class="product-pricing">
                                 <span class="product-price-currency">R$</span>
-                                <span class="product-price-value">${formatMoney(prod.price)}</span>
-                                <span class="product-unit">/ ${prod.unit}</span>
+                                <span class="product-price-value">${formatMoney(displayPrice)}</span>
+                                <span class="product-unit">/ ${escapeHtml(displayUnit)}</span>
                             </div>
 
                             <div class="product-actions-bar">
@@ -2537,50 +2993,71 @@
         }
 
         // ==========================================================================
-        // 4. OPERAÇÕES DO CARRINHO (ADICIONAR, REMOVER, QUANTIDADE)
+        // 5. OPERAÇÕES DO CARRINHO (ADICIONAR, REMOVER, QUANTIDADE)
         // ==========================================================================
         function addProductToCart(productId) {
-            const product = PRODUCTS.find(p => p.id === productId);
-            if (!product) return;
+            const prod = PRODUCTS.find(p => p.id === productId);
+            if (!prod) return;
 
             const qtyInput = document.getElementById(`qty-input-${productId}`);
             const qtyToAdd = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
 
-            const existingIndex = cart.findIndex(item => item.id === productId);
+            let cartItemId = prod.id;
+            let itemPrice = prod.price;
+            let itemUnit = prod.unit;
+            let variantDesc = '';
+
+            if (prod.hasVariants) {
+                const active = getActiveVariant(prod);
+                if (active) {
+                    cartItemId = `${prod.id}__${active.id}`;
+                    itemPrice = active.price;
+                    itemUnit = active.weight || prod.unit;
+                    variantDesc = [active.brand, active.weight, active.spec].filter(Boolean).join(' • ');
+                }
+            }
+
+            const existingIndex = cart.findIndex(item => item.id === cartItemId);
             if (existingIndex > -1) {
                 cart[existingIndex].qty += qtyToAdd;
             } else {
                 cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    unit: product.unit,
-                    image: product.image,
+                    id: cartItemId,
+                    masterId: prod.id,
+                    name: prod.name,
+                    variantDesc: variantDesc,
+                    price: itemPrice,
+                    unit: itemUnit,
+                    image: prod.image,
                     qty: qtyToAdd
                 });
             }
 
             saveCartToStorage();
             updateCartUI();
-            showToast(`${qtyToAdd}x ${product.name} adicionado ao carrinho!`);
 
-            // Animação de bounce no badge
+            const toastText = variantDesc 
+                ? `${qtyToAdd}x ${prod.name} (${variantDesc}) adicionado!`
+                : `${qtyToAdd}x ${prod.name} adicionado ao carrinho!`;
+            showToast(toastText);
+
+            // Animação no badge
             const badge = document.getElementById('cartBadge');
             badge.classList.remove('bump');
-            void badge.offsetWidth; // Trigger reflow
+            void badge.offsetWidth;
             badge.classList.add('bump');
 
-            // Reset input card para 1
+            // Reset input do card para 1
             if (qtyInput) qtyInput.value = 1;
         }
 
-        function updateCartItemQty(productId, delta) {
-            const item = cart.find(i => i.id === productId);
+        function updateCartItemQty(cartItemId, delta) {
+            const item = cart.find(i => i.id === cartItemId);
             if (!item) return;
 
             item.qty += delta;
             if (item.qty <= 0) {
-                removeFromCart(productId);
+                removeFromCart(cartItemId);
                 return;
             }
 
@@ -2588,8 +3065,8 @@
             updateCartUI();
         }
 
-        function removeFromCart(productId) {
-            cart = cart.filter(i => i.id !== productId);
+        function removeFromCart(cartItemId) {
+            cart = cart.filter(i => i.id !== cartItemId);
             saveCartToStorage();
             updateCartUI();
             showToast('Item removido do carrinho.');
@@ -2646,6 +3123,7 @@
                         <img src="${item.image}" alt="${escapeHtml(item.name)}" class="cart-item-img" onerror="this.onerror=null; this.src='about-image.jpg';">
                         <div class="cart-item-details">
                             <h4 class="cart-item-name">${escapeHtml(item.name)}</h4>
+                            ${item.variantDesc ? `<div class="cart-item-variant">${escapeHtml(item.variantDesc)}</div>` : ''}
                             <div class="cart-item-price">
                                 R$ ${formatMoney(item.price)} <span style="font-size: 0.75rem;">(${item.unit})</span>
                             </div>
@@ -2669,7 +3147,7 @@
         }
 
         // ==========================================================================
-        // 5. CONTROLE DO DRAWER LATERAL (ABRIR E FECHAR)
+        // 6. CONTROLE DO DRAWER LATERAL (ABRIR E FECHAR)
         // ==========================================================================
         const cartDrawer = document.getElementById('cartDrawer');
         const cartOverlay = document.getElementById('cartOverlay');
@@ -2693,7 +3171,7 @@
         cartOverlay.addEventListener('click', closeCart);
 
         // ==========================================================================
-        // 6. FORMULÁRIO DE FINALIZAÇÃO & INTEGRAÇÃO WHATSAPP
+        // 7. FORMULÁRIO DE FINALIZAÇÃO & INTEGRAÇÃO WHATSAPP
         // ==========================================================================
         const clientPhoneInput = document.getElementById('clientPhone');
         const consentCheckbox = document.getElementById('consentCheck');
@@ -2714,7 +3192,7 @@
             e.target.value = v;
         });
 
-        // Validação da Caixa de Consentimento (Se desmarcada, bloqueia o botão)
+        // Validação da Caixa de Consentimento
         consentCheckbox.addEventListener('change', function() {
             if (!this.checked) {
                 btnFinalizeOrder.disabled = true;
@@ -2727,13 +3205,11 @@
 
         // AÇÃO: Finalizar Pedido via WhatsApp
         btnFinalizeOrder.addEventListener('click', function() {
-            // 1. Validação de Carrinho
             if (cart.length === 0) {
                 alert('Seu carrinho está vazio! Adicione produtos antes de prosseguir.');
                 return;
             }
 
-            // 2. Validação dos Campos Obrigatórios
             const clientName = document.getElementById('clientName').value.trim();
             const clientPhone = document.getElementById('clientPhone').value.trim();
 
@@ -2756,13 +3232,13 @@
                 return;
             }
 
-            // 3. Montagem da Mensagem com %0A e Formatação Markdown
             const { totalPrice } = calculateCartTotals();
             
             let itemsText = '';
             cart.forEach(item => {
                 const sub = formatMoney(item.price * item.qty);
-                itemsText += `• ${item.qty}x ${item.name} (${item.unit}) - R$ ${sub}%0A`;
+                const specInfo = item.variantDesc ? ` [${item.variantDesc}]` : ` (${item.unit})`;
+                itemsText += `• ${item.qty}x ${item.name}${specInfo} - R$ ${sub}%0A`;
             });
 
             const rawMessage = 
@@ -2778,26 +3254,21 @@
                 `------------------------------------------%0A` +
                 `💰 *VALOR TOTAL DO PEDIDO: R$ ${formatMoney(totalPrice)}*%0A` +
                 `------------------------------------------%0A` +
-                `✅ _Cliente autorizou contato e aguarda confirmação de estoque e separação para retirada._`;
+                `✅ _Cliente autorizou contato e aguarda confirmação e separação para retirada no balcão._`;
 
-            // 4. Redirecionamento para a API do WhatsApp Oficial da Loja: (16) 99359-6161
             const storePhone = '5516993596161';
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${storePhone}&text=${rawMessage}`;
 
-            // Abre WhatsApp em nova aba
             window.open(whatsappUrl, '_blank');
-
-            // Feedback ao usuário
             showToast('Redirecionando para o WhatsApp da Cerealista Pansani...');
             
-            // Fecha o carrinho após 1.2s
             setTimeout(() => {
                 closeCart();
             }, 1200);
         });
 
         // ==========================================================================
-        // 7. UTILITÁRIOS GERAIS
+        // 8. UTILITÁRIOS GERAIS & INICIALIZAÇÃO
         // ==========================================================================
         function formatMoney(value) {
             return Number(value).toFixed(2).replace('.', ',');
@@ -2855,6 +3326,7 @@
 
         // Inicialização
         document.addEventListener('DOMContentLoaded', () => {
+            initProductSelections();
             renderProducts();
             updateCartUI();
         });
