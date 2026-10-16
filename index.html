@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cerealista Pansani — Rações, Grãos & Empório Artesanal | Franca - SP</title>
-    <meta name="description" content="Cerealista Pansani: 37 anos de tradição. Rações pet e agro, grãos a granel, ovos caipiras, mel e cachaça artesanal direto do produtor em Franca - SP. Peça online via WhatsApp!">
+    <meta name="description" content="Cerealista Pansani: 37 anos de tradição. Rações pet e agro, grãos a granel, ovos caipiras, mel e cachaça artesanal direto do produtor em Franca - SP. Retire no balcão!">
     
     <!-- Open Graph / Redes Sociais -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Cerealista Pansani — Tradição e Qualidade Direto do Produtor">
-    <meta property="og:description" content="Rações para animais de estimação e criação, cereais a granel e produtos artesanais da roça. Faça seu pedido pelo WhatsApp!">
+    <meta property="og:description" content="Rações para animais de estimação e criação, cereais a granel e produtos artesanais da roça. Faça seu pedido para retirada no balcão!">
     <meta property="og:image" content="about-image.jpg">
     
     <!-- Google Fonts: Outfit (Títulos) & Plus Jakarta Sans (Texto) -->
@@ -195,9 +195,9 @@
             align-items: center;
             gap: 12px;
             font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem;
             font-weight: 800;
             color: var(--primary);
+            white-space: nowrap;
         }
 
         .brand-logo-icon {
@@ -211,6 +211,7 @@
             justify-content: center;
             font-size: 1.25rem;
             box-shadow: 0 4px 10px rgba(30, 70, 32, 0.25);
+            flex-shrink: 0;
         }
 
         .brand-logo-text {
@@ -219,12 +220,19 @@
             line-height: 1.1;
         }
 
+        .brand-logo-text .brand-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
         .brand-logo-text span.sub {
             font-size: 0.72rem;
             font-weight: 600;
             color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
@@ -571,7 +579,7 @@
         }
 
         /* ==========================================================================
-           6. VITRINE DE PRODUTOS INTERATIVA (CATÁLOGO & E-COMMERCE)
+           6. VITRINE DE PRODUTOS INTERATIVA (CATÁLOGO)
            ========================================================================== */
         .products-section {
             padding: 80px 0;
@@ -862,7 +870,7 @@
         }
 
         /* ==========================================================================
-           7. SEÇÃO SOBRE NÓS (COM A FOTO ORIGINAL DO MASCOTE/LOJA)
+           7. SEÇÃO SOBRE NÓS
            ========================================================================== */
         .about-section {
             padding: 85px 0;
@@ -1385,6 +1393,30 @@
             color: var(--primary);
         }
 
+        /* Aviso de Retirada Exclusiva */
+        .pickup-notice-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            background-color: var(--primary-subtle);
+            border: 1px solid rgba(30, 70, 32, 0.15);
+            border-radius: var(--radius-sm);
+        }
+
+        .pickup-notice-box i {
+            font-size: 1.4rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .pickup-notice-box strong {
+            display: block;
+            font-size: 0.88rem;
+            color: var(--primary);
+            line-height: 1.25;
+        }
+
         /* Formulário de Finalização Embutido */
         .checkout-box {
             background-color: #fff;
@@ -1625,6 +1657,10 @@
         }
 
         @media (max-width: 768px) {
+            .brand-logo-text .brand-title {
+                font-size: 1.15rem;
+            }
+
             .main-nav {
                 position: fixed;
                 top: 72px;
@@ -1650,7 +1686,7 @@
             }
 
             .btn-header-zap {
-                display: none; /* No mobile fica o flutuante */
+                display: none;
             }
 
             .hero-content h1 {
@@ -1687,7 +1723,7 @@
                     <i class="fa-solid fa-wheat-awn"></i>
                 </div>
                 <div class="brand-logo-text">
-                    <span>Pansani</span>
+                    <span class="brand-title">Cerealista Pansani</span>
                     <span class="sub">Agro & Pet • Desde 1989</span>
                 </div>
             </a>
@@ -1738,7 +1774,7 @@
                         <span class="highlight">Direto do produtor</span> para sua casa!
                     </h1>
                     <p>
-                        Rações selecionadas para pet e criação, grãos e cereais a granel, além de produtos artesanais autênticos da roça. Faça seu pedido online e retire ou receba com agilidade!
+                        Rações selecionadas para pet e criação, grãos e cereais a granel, além de produtos artesanais autênticos da roça. Faça seu pedido online e retire no balcão com agilidade!
                     </p>
                     <div class="hero-buttons">
                         <a href="#produtos" class="btn-primary">
@@ -1759,7 +1795,7 @@
                         </div>
                         <div class="trust-item">
                             <i class="fa-solid fa-circle-check"></i>
-                            <span>Atendimento Humanizado</span>
+                            <span>Retirada Rápida no Balcão</span>
                         </div>
                     </div>
                 </div>
@@ -1798,11 +1834,11 @@
 
                 <div class="benefit-card">
                     <div class="benefit-icon">
-                        <i class="fa-solid fa-truck-fast"></i>
+                        <i class="fa-solid fa-store"></i>
                     </div>
                     <div class="benefit-info">
-                        <h4>Entrega Rápida</h4>
-                        <p>Entregas em Franca e região ou retirada ágil direto no balcão.</p>
+                        <h4>Retirada Rápida</h4>
+                        <p>Faça seu pedido online e retire tudo embalado e pronto no balcão sem filas.</p>
                     </div>
                 </div>
 
@@ -1829,7 +1865,7 @@
         </section>
 
         <!-- ==========================================================================
-           VITRINE DE PRODUTOS DINÂMICA (E-COMMERCE)
+           VITRINE DE PRODUTOS DINÂMICA (CATÁLOGO)
            ========================================================================== -->
         <section class="products-section" id="produtos">
             <div class="container">
@@ -1839,7 +1875,7 @@
                     </div>
                     <h2 class="section-title">Escolha Seus Produtos</h2>
                     <p class="section-subtitle">
-                        Navegue por nossas categorias, adicione ao carrinho e conclua o pedido diretamente no WhatsApp para atendimento imediato.
+                        Navegue por nossas categorias, monte seu pedido e envie diretamente pelo WhatsApp para separação e retirada no balcão.
                     </p>
                 </div>
 
@@ -1923,9 +1959,9 @@
                     <div class="badge-pill">
                         <i class="fa-solid fa-location-dot"></i> Onde Estamos
                     </div>
-                    <h2 class="section-title">Venha nos Visitar ou Peça Online</h2>
+                    <h2 class="section-title">Venha nos Visitar ou Retire seu Pedido</h2>
                     <p class="section-subtitle">
-                        Estamos prontos para te atender no balcão ou agilizar seu pedido pelo WhatsApp.
+                        Estamos prontos para te atender diretamente em nosso balcão.
                     </p>
                 </div>
 
@@ -1960,7 +1996,7 @@
                                 <i class="fa-solid fa-map-pin"></i>
                             </div>
                             <div class="contact-meta-text">
-                                <h5>Endereço Físico</h5>
+                                <h5>Endereço Físico (Balcão de Retirada)</h5>
                                 <p>Rua Joaquim Leôncio Coelho, 120</p>
                                 <p>Jardim Conceição Leite — Franca, SP | CEP 14405-362</p>
                             </div>
@@ -1996,8 +2032,8 @@
                         <i class="fa-solid fa-wheat-awn"></i>
                     </div>
                     <div class="brand-logo-text">
-                        <span>Pansani</span>
-                        <span class="sub" style="color: rgba(255,255,255,0.7);">Cerealista & Agro</span>
+                        <span class="brand-title" style="color: #fff;">Cerealista Pansani</span>
+                        <span class="sub" style="color: rgba(255,255,255,0.7);">Agro & Pet • Desde 1989</span>
                     </div>
                 </a>
                 <p>
@@ -2044,7 +2080,7 @@
     </footer>
 
     <!-- ==========================================================================
-       DRAWER DO CARRINHO (LATERAL DINÂMICA COM SCROLL SUAVE INTEGRADO)
+       DRAWER DO CARRINHO (LATERAL DINÂMICA - EXCLUSIVO RETIRADA NO BALCÃO)
        ========================================================================== -->
     <div class="cart-overlay" id="cartOverlay"></div>
 
@@ -2083,7 +2119,7 @@
                         <span class="amount" id="cartTotalDisplay">R$ 0,00</span>
                     </div>
                     <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0;">
-                        * O pagamento é combinado diretamente com o atendente na entrega ou retirada.
+                        * O pagamento é realizado diretamente no balcão da loja na retirada dos produtos.
                     </p>
                 </div>
 
@@ -2093,6 +2129,17 @@
                         <i class="fa-solid fa-clipboard-user" style="color: var(--accent);"></i>
                         Dados para o Pedido
                     </h4>
+
+                    <!-- Aviso de Retirada Exclusiva -->
+                    <div class="pickup-notice-box">
+                        <i class="fa-solid fa-store"></i>
+                        <div>
+                            <strong>Modalidade: Retirada no Balcão</strong>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">
+                                Loja física: R. Joaquim Leôncio Coelho, 120 - Franca/SP
+                            </p>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label for="clientName">Seu Nome Completo *</label>
@@ -2104,24 +2151,11 @@
                         <input type="tel" id="clientPhone" placeholder="(16) 99999-9999" required autocomplete="tel" maxlength="15">
                     </div>
 
-                    <div class="form-group">
-                        <label for="orderType">Forma de Retirada / Entrega</label>
-                        <select id="orderType">
-                            <option value="Retirada no Balcão">🏪 Retirar na Loja (R. Joaquim Leôncio Coelho, 120)</option>
-                            <option value="Entrega em Franca">🚚 Entrega em Franca (A combinar no WhatsApp)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group" id="deliveryAddressGroup" style="display: none;">
-                        <label for="clientAddress">Endereço / Bairro para Entrega *</label>
-                        <input type="text" id="clientAddress" placeholder="Rua, número e bairro">
-                    </div>
-
                     <!-- Checkbox de Consentimento Obrigatório (marcado como padrão) -->
                     <div class="consent-box" id="consentBox">
                         <input type="checkbox" id="consentCheck" checked required>
                         <label for="consentCheck">
-                            Autorizo o contato da Cerealista Pansani pelo WhatsApp para confirmação do pedido, conferência de estoque e entrega. *
+                            Autorizo o contato da Cerealista Pansani pelo WhatsApp para confirmação do pedido, conferência de estoque e separação para retirada. *
                         </label>
                     </div>
 
@@ -2159,7 +2193,7 @@
        ========================================================================== -->
     <script>
         // ==========================================================================
-        // 1. BANCO DE DADOS DE PRODUTOS
+        // 1. BANCO DE DADOS DE PRODUTOS (PREÇOS ZERADOS CONFORME INSTRUÇÃO)
         // ==========================================================================
         const PRODUCTS = [
             // --- LINHA PET ---
@@ -2169,7 +2203,7 @@
                 category: 'pet',
                 categoryLabel: 'Linha Pet',
                 unit: 'Saco 15kg',
-                price: 159.90,
+                price: 0.00,
                 desc: 'Alimento premium especial com ômegas 3 e 6 para pelos brilhantes e alta palatabilidade.',
                 image: 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600&auto=format&fit=crop&q=80'
             },
@@ -2179,7 +2213,7 @@
                 category: 'pet',
                 categoryLabel: 'Linha Pet',
                 unit: 'Pacote 3kg',
-                price: 94.90,
+                price: 0.00,
                 desc: 'Nutrição super premium balanceada para controle de peso e trato urinário saudável.',
                 image: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop&q=80'
             },
@@ -2189,7 +2223,7 @@
                 category: 'pet',
                 categoryLabel: 'Linha Pet',
                 unit: 'Saco 15kg',
-                price: 145.00,
+                price: 0.00,
                 desc: 'Com prebióticos para digestão saudável e cálcio para ossos fortes.',
                 image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&auto=format&fit=crop&q=80'
             },
@@ -2199,7 +2233,7 @@
                 category: 'pet',
                 categoryLabel: 'Linha Pet',
                 unit: 'Pacote 1kg',
-                price: 16.50,
+                price: 0.00,
                 desc: 'Sementes limpas, selecionadas e ricas em vitaminas para pássaros saudáveis.',
                 image: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=600&auto=format&fit=crop&q=80'
             },
@@ -2209,7 +2243,7 @@
                 category: 'pet',
                 categoryLabel: 'Linha Pet',
                 unit: 'Pacote 1kg',
-                price: 18.00,
+                price: 0.00,
                 desc: 'Fibras nobres e alfafa para roedores e pequenos animais domésticos.',
                 image: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600&auto=format&fit=crop&q=80'
             },
@@ -2219,7 +2253,7 @@
                 category: 'pet',
                 categoryLabel: 'Linha Pet',
                 unit: 'Pote 100g',
-                price: 14.90,
+                price: 0.00,
                 desc: 'Alimento completo flutuante de alta aceitação para peixes de aquário.',
                 image: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=600&auto=format&fit=crop&q=80'
             },
@@ -2231,7 +2265,7 @@
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
                 unit: 'Saca 50kg',
-                price: 68.00,
+                price: 0.00,
                 desc: 'Milho seco de alta pureza, ideal para alimentação de galinhas, suínos e cavalos.',
                 image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop&q=80'
             },
@@ -2241,7 +2275,7 @@
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
                 unit: 'Granel (Preço por kg)',
-                price: 2.50,
+                price: 0.00,
                 desc: 'Quirera pura para pintinhos e aves jovens. Compre a quantidade que desejar!',
                 image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600&auto=format&fit=crop&q=80'
             },
@@ -2251,7 +2285,7 @@
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
                 unit: 'Saco 40kg',
-                price: 98.00,
+                price: 0.00,
                 desc: 'Ração peletizada e melaçada com leveduras para cavalos de trabalho e hipismo.',
                 image: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80'
             },
@@ -2261,7 +2295,7 @@
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
                 unit: 'Saco 40kg',
-                price: 85.00,
+                price: 0.00,
                 desc: 'Mistura rica em minerais e proteínas para aumento da produção leiteira e ganho de peso.',
                 image: 'https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=600&auto=format&fit=crop&q=80'
             },
@@ -2271,7 +2305,7 @@
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
                 unit: 'Saco 20kg',
-                price: 76.00,
+                price: 0.00,
                 desc: 'Com cálcio e fósforo quelatados para casca resistente e gema avermelhada.',
                 image: 'https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600&auto=format&fit=crop&q=80'
             },
@@ -2281,7 +2315,7 @@
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
                 unit: 'Saco 40kg',
-                price: 92.00,
+                price: 0.00,
                 desc: 'Formulação específica para conversão alimentar eficiente na criação de porcos.',
                 image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600&auto=format&fit=crop&q=80'
             },
@@ -2291,7 +2325,7 @@
                 category: 'agro',
                 categoryLabel: 'Linha Agro',
                 unit: 'Saco 10kg',
-                price: 64.00,
+                price: 0.00,
                 desc: 'Extrusada, flutua na água garantindo consumo total por tilápias e carpas.',
                 image: 'https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=600&auto=format&fit=crop&q=80'
             },
@@ -2303,7 +2337,7 @@
                 category: 'emporio',
                 categoryLabel: 'Empório Artesanal',
                 unit: 'Pote 1kg',
-                price: 38.00,
+                price: 0.00,
                 desc: 'Mel legítimo e cru, colhido diretamente nas matas e floradas da região de Franca.',
                 image: 'https://images.unsplash.com/photo-1471943311424-646960669fbc?w=600&auto=format&fit=crop&q=80'
             },
@@ -2313,7 +2347,7 @@
                 category: 'emporio',
                 categoryLabel: 'Empório Artesanal',
                 unit: 'Cartela 30 ovos',
-                price: 24.00,
+                price: 0.00,
                 desc: 'Ovos de galinhas criadas soltas, com gema intensa e alto valor nutritivo.',
                 image: 'https://images.unsplash.com/photo-1516448620398-c5f44bf9f441?w=600&auto=format&fit=crop&q=80'
             },
@@ -2323,7 +2357,7 @@
                 category: 'emporio',
                 categoryLabel: 'Empório Artesanal',
                 unit: 'Pacote 500g',
-                price: 28.00,
+                price: 0.00,
                 desc: 'Grãos 100% arábica da Alta Mogiana, encorpado, com aroma marcante e fresquinho.',
                 image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&auto=format&fit=crop&q=80'
             },
@@ -2333,7 +2367,7 @@
                 category: 'emporio',
                 categoryLabel: 'Empório Artesanal',
                 unit: 'Garrafa 900ml',
-                price: 45.00,
+                price: 0.00,
                 desc: 'Destilada em alambique de cobre tradicional e envelhecida em barris de carvalho.',
                 image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&auto=format&fit=crop&q=80'
             },
@@ -2343,7 +2377,7 @@
                 category: 'emporio',
                 categoryLabel: 'Empório Artesanal',
                 unit: 'Frasco 30ml',
-                price: 26.00,
+                price: 0.00,
                 desc: 'Concentração alcoólica de própolis verde para fortalecimento da imunidade natural.',
                 image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&auto=format&fit=crop&q=80'
             },
@@ -2353,7 +2387,7 @@
                 category: 'emporio',
                 categoryLabel: 'Empório Artesanal',
                 unit: 'Peça ~800g',
-                price: 42.00,
+                price: 0.00,
                 desc: 'Produzido com leite cru por produtores tradicionais. Textura macia e sabor autêntico.',
                 image: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=600&auto=format&fit=crop&q=80'
             }
@@ -2368,7 +2402,13 @@
         function loadCartFromStorage() {
             try {
                 const stored = localStorage.getItem(CART_STORAGE_KEY);
-                return stored ? JSON.parse(stored) : [];
+                let items = stored ? JSON.parse(stored) : [];
+                // Sincroniza preços atuais dos produtos (zerados conforme pedido)
+                items.forEach(it => {
+                    const found = PRODUCTS.find(p => p.id === it.id);
+                    if (found) it.price = found.price;
+                });
+                return items;
             } catch (e) {
                 console.error('Erro ao ler carrinho do localStorage', e);
                 return [];
@@ -2581,7 +2621,7 @@
                     <div class="cart-empty-state">
                         <i class="fa-solid fa-cart-arrow-down"></i>
                         <h4>Seu carrinho está vazio</h4>
-                        <p style="font-size: 0.88rem;">Adicione rações, cereais ou produtos artesanais para montar seu pedido.</p>
+                        <p style="font-size: 0.88rem;">Adicione rações, cereais ou produtos artesanais para montar seu pedido de retirada.</p>
                     </div>
                 `;
                 checkoutArea.style.display = 'none';
@@ -2656,8 +2696,6 @@
         // 6. FORMULÁRIO DE FINALIZAÇÃO & INTEGRAÇÃO WHATSAPP
         // ==========================================================================
         const clientPhoneInput = document.getElementById('clientPhone');
-        const orderTypeSelect = document.getElementById('orderType');
-        const deliveryAddressGroup = document.getElementById('deliveryAddressGroup');
         const consentCheckbox = document.getElementById('consentCheck');
         const consentBox = document.getElementById('consentBox');
         const btnFinalizeOrder = document.getElementById('btnFinalizeOrder');
@@ -2674,16 +2712,6 @@
                 v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
             }
             e.target.value = v;
-        });
-
-        // Alterna campo de endereço conforme seleção de Entrega
-        orderTypeSelect.addEventListener('change', function() {
-            if (this.value === 'Entrega em Franca') {
-                deliveryAddressGroup.style.display = 'flex';
-                document.getElementById('clientAddress').focus();
-            } else {
-                deliveryAddressGroup.style.display = 'none';
-            }
         });
 
         // Validação da Caixa de Consentimento (Se desmarcada, bloqueia o botão)
@@ -2708,8 +2736,6 @@
             // 2. Validação dos Campos Obrigatórios
             const clientName = document.getElementById('clientName').value.trim();
             const clientPhone = document.getElementById('clientPhone').value.trim();
-            const orderType = orderTypeSelect.value;
-            const clientAddress = document.getElementById('clientAddress').value.trim();
 
             if (!clientName || clientName.length < 2) {
                 alert('Por favor, informe seu Nome Completo.');
@@ -2725,18 +2751,12 @@
 
             if (!consentCheckbox.checked) {
                 consentBox.classList.add('warning');
-                alert('É necessário marcar a caixa autorizando o contato pelo WhatsApp para que a equipe da Cerealista Pansani possa confirmar seu pedido e entrega.');
+                alert('É necessário marcar a caixa autorizando o contato pelo WhatsApp para que a equipe da Cerealista Pansani possa confirmar seu pedido e separação para retirada.');
                 consentCheckbox.focus();
                 return;
             }
 
-            if (orderType === 'Entrega em Franca' && !clientAddress) {
-                alert('Por favor, informe o seu Endereço/Bairro para calcularmos a entrega.');
-                document.getElementById('clientAddress').focus();
-                return;
-            }
-
-            // 3. Montagem da Mensagem Perfeita com %0A e Formatação Markdown
+            // 3. Montagem da Mensagem com %0A e Formatação Markdown
             const { totalPrice } = calculateCartTotals();
             
             let itemsText = '';
@@ -2745,26 +2765,20 @@
                 itemsText += `• ${item.qty}x ${item.name} (${item.unit}) - R$ ${sub}%0A`;
             });
 
-            let addressLine = '';
-            if (orderType === 'Entrega em Franca' && clientAddress) {
-                addressLine = `📍 *Endereço de Entrega:* ${encodeURIComponent(clientAddress)}%0A`;
-            }
-
             const rawMessage = 
                 `🌾 *NOVO PEDIDO - CEREALISTA PANSANI* 🐾%0A` +
                 `------------------------------------------%0A` +
                 `👤 *DADOS DO CLIENTE:*%0A` +
                 `• *Nome:* ${encodeURIComponent(clientName)}%0A` +
-                `• *Telefone/WhatsApp:* ${encodeURIComponent(clientPhone)}%0A` +
-                `• *Modalidade:* ${encodeURIComponent(orderType)}%0A` +
-                addressLine +
+                `• *WhatsApp:* ${encodeURIComponent(clientPhone)}%0A` +
+                `• *Modalidade:* 🏪 Retirada no Balcão (Loja Física)%0A` +
                 `------------------------------------------%0A` +
                 `🛒 *PRODUTOS SELECIONADOS:*%0A` +
                 itemsText +
                 `------------------------------------------%0A` +
                 `💰 *VALOR TOTAL DO PEDIDO: R$ ${formatMoney(totalPrice)}*%0A` +
                 `------------------------------------------%0A` +
-                `✅ _Cliente autorizou contato e aguarda retorno para confirmação de estoque e horário._`;
+                `✅ _Cliente autorizou contato e aguarda confirmação de estoque e separação para retirada._`;
 
             // 4. Redirecionamento para a API do WhatsApp Oficial da Loja: (16) 99359-6161
             const storePhone = '5516993596161';
