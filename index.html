@@ -484,14 +484,14 @@
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border);
             position: relative;
-            overflow: hidden;
         }
 
-        .hero-card-featured img {
+        .hero-card-featured > img {
             border-radius: var(--radius-md);
             width: 100%;
             height: 380px;
             object-fit: cover;
+            display: block;
         }
 
         .hero-floating-tag {
@@ -531,6 +531,277 @@
             font-size: 0.8rem;
             margin: 0;
             color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           4.1. ELEMENTOS DA MASCOTE (ESTILO DISNEY / PIXAR)
+           ========================================================================== */
+        /* Hero Mascote Card / Badge */
+        .hero-mascot-pill {
+            position: absolute;
+            top: -18px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--accent);
+            border-radius: var(--radius-full);
+            padding: 8px 18px 8px 10px;
+            box-shadow: 0 10px 25px rgba(230, 126, 34, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 5;
+            animation: mascotFloat 4s ease-in-out infinite;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .hero-mascot-pill:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 14px 30px rgba(230, 126, 34, 0.35);
+        }
+
+        @keyframes mascotFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .hero-mascot-img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            background: #fff;
+            flex-shrink: 0;
+        }
+
+        .hero-mascot-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .hero-mascot-title {
+            font-size: 0.76rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .hero-mascot-phrase {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        /* Sobre Nós - Card da Mascote */
+        .about-mascot-card {
+            margin-top: 25px;
+            background: linear-gradient(135deg, #FFFDF9 0%, #F5EFE6 100%);
+            border: 1px solid rgba(230, 126, 34, 0.35);
+            border-left: 5px solid var(--accent);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .about-mascot-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .about-mascot-avatar-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .about-mascot-avatar {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .about-mascot-online-dot {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 14px;
+            height: 14px;
+            background: #2ECC71;
+            border: 2px solid #fff;
+            border-radius: 50%;
+        }
+
+        .about-mascot-content h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .about-mascot-content p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        /* Carrinho - Mascote no Estado Vazio e Nota de Apoio */
+        .cart-empty-mascot-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 16px auto;
+            border: 3px solid var(--accent-light);
+            box-shadow: 0 6px 18px rgba(230, 126, 34, 0.2);
+            animation: mascotWave 3s ease-in-out infinite;
+            display: block;
+        }
+
+        @keyframes mascotWave {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.04) rotate(2deg); }
+        }
+
+        .cart-mascot-note {
+            background-color: var(--primary-subtle);
+            border: 1px solid rgba(45, 106, 79, 0.25);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            line-height: 1.35;
+            margin-bottom: 15px;
+        }
+
+        .cart-mascot-note-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        /* Assistente Flutuante da Mascote */
+        .floating-mascot-container {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 850;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .mascot-speech-bubble {
+            background: #fff;
+            border: 2px solid var(--accent);
+            border-radius: 18px 18px 18px 4px;
+            padding: 12px 16px;
+            max-width: 250px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            font-size: 0.82rem;
+            color: var(--text);
+            line-height: 1.35;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+            display: block;
+        }
+
+        .mascot-speech-bubble strong {
+            display: block;
+            color: var(--primary);
+            font-size: 0.88rem;
+            margin-bottom: 3px;
+        }
+
+        .mascot-speech-bubble .close-btn {
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 2px 6px;
+        }
+
+        .mascot-speech-bubble .close-btn:hover {
+            color: var(--accent);
+        }
+
+        .mascot-trigger-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            border: 2px solid var(--accent);
+            padding: 6px 14px 6px 6px;
+            border-radius: var(--radius-full);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mascot-trigger-btn:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-hover);
+            box-shadow: 0 8px 22px rgba(230, 126, 34, 0.3);
+        }
+
+        .mascot-trigger-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .mascot-trigger-text {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .mascot-trigger-tag {
+            font-size: 0.68rem;
+            background: var(--accent-light);
+            color: var(--accent-hover);
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: 800;
+            margin-left: 4px;
         }
 
         /* ==========================================================================
@@ -1808,6 +2079,34 @@
             .contact-info-panel {
                 padding: 30px 20px;
             }
+
+            .hero-mascot-pill {
+                top: -12px;
+                right: 10px;
+                padding: 6px 12px 6px 8px;
+            }
+            .hero-mascot-img {
+                width: 40px;
+                height: 40px;
+            }
+            .hero-mascot-phrase {
+                font-size: 0.76rem;
+            }
+            .about-mascot-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+            .floating-mascot-container {
+                bottom: 15px;
+                left: 15px;
+            }
+            .mascot-trigger-text {
+                display: none;
+            }
+            .mascot-trigger-btn {
+                padding: 4px;
+            }
         }
     </style>
 </head>
@@ -1901,6 +2200,15 @@
                 </div>
 
                 <div class="hero-media">
+                    <!-- Mascote Boas-Vindas estilo Disney -->
+                    <div class="hero-mascot-pill" onclick="document.getElementById('sobre').scrollIntoView({behavior: 'smooth'})" title="Conheça nossa anfitriã do balcão!">
+                        <img src="images/mascote_aceno.jpg" alt="Mascote da Cerealista Pansani dando boas-vindas" class="hero-mascot-img">
+                        <div class="hero-mascot-info">
+                            <span class="hero-mascot-title">Mascote oficial 🐾</span>
+                            <span class="hero-mascot-phrase">"Oi! Seja bem-vindo à nossa casa!"</span>
+                        </div>
+                    </div>
+
                     <div class="hero-card-featured">
                         <img src="about-image.jpg" alt="Atendimento acolhedor da Cerealista Pansani" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&auto=format&fit=crop&q=80';">
                         <div class="hero-floating-tag">
@@ -2046,9 +2354,25 @@
                         <li><i class="fa-solid fa-check-circle"></i> Estacionamento e fácil acesso</li>
                     </ul>
 
-                    <a href="https://wa.me/5516993596161?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Cerealista%20Pansani." target="_blank" rel="noopener" class="btn-primary">
-                        <i class="fa-brands fa-whatsapp"></i> Fale conosco pelo WhatsApp
-                    </a>
+                    <!-- Card Especial da Mascote da Loja -->
+                    <div class="about-mascot-card">
+                        <div class="about-mascot-avatar-wrap">
+                            <img src="images/mascote_balcao.jpg" alt="Mascote oficial felina no balcão da Cerealista Pansani" class="about-mascot-avatar">
+                            <span class="about-mascot-online-dot" title="Sempre presente no balcão"></span>
+                        </div>
+                        <div class="about-mascot-content">
+                            <h4>Nossa anfitriã oficial do balcão 🐾</h4>
+                            <p>
+                                Quem visita nosso balcão físico em Franca sempre é recebido pela nossa fiel mascote felina. Calma, carinhosa e atenta a tudo, ela é o símbolo vivo do acolhimento e da tradição da família Pansani!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 25px;">
+                        <a href="https://wa.me/5516993596161?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Cerealista%20Pansani." target="_blank" rel="noopener" class="btn-primary">
+                            <i class="fa-brands fa-whatsapp"></i> Fale conosco pelo WhatsApp
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2226,6 +2550,12 @@
                     </p>
                 </div>
 
+                <!-- Nota Receptiva da Mascote no Checkout -->
+                <div class="cart-mascot-note">
+                    <img src="images/mascote_aceno.jpg" alt="Mascote Pansani" class="cart-mascot-note-avatar">
+                    <span>Nossa mascote e equipe já estão preparadas no balcão para conferir e separar seu pedido com carinho! 🐾</span>
+                </div>
+
                 <!-- Formulário de Finalização -->
                 <form id="checkoutForm" class="checkout-box" onsubmit="return false;">
                     <h4 class="checkout-box-title">
@@ -2284,6 +2614,19 @@
        aria-label="Falar conosco no WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- Assistente Receptivo Flutuante da Mascote -->
+    <div class="floating-mascot-container" id="floatingMascotContainer">
+        <div class="mascot-speech-bubble" id="mascotBubble">
+            <button type="button" class="close-btn" onclick="toggleMascotBubble(false)" aria-label="Fechar balão">&times;</button>
+            <strong>Oi, amigo cliente! 🐾</strong>
+            <span>Monte seu pedido aqui no site para retirar no balcão ou me chame no WhatsApp!</span>
+        </div>
+        <button type="button" class="mascot-trigger-btn" onclick="toggleMascotBubble()" aria-label="Mascote Pansani">
+            <img src="images/mascote_aceno.jpg" alt="Mascote Pansani" class="mascot-trigger-avatar">
+            <span class="mascot-trigger-text">Mascote Pansani <span class="mascot-trigger-tag">Online</span></span>
+        </button>
+    </div>
 
     <!-- Toast Notification -->
     <div class="toast-notify" id="toastNotify">
@@ -3096,9 +3439,14 @@
             if (cart.length === 0) {
                 itemsContainer.innerHTML = `
                     <div class="cart-empty-state">
-                        <i class="fa-solid fa-cart-arrow-down"></i>
-                        <h4>Seu carrinho está vazio</h4>
-                        <p style="font-size: 0.88rem;">Adicione rações, cereais ou produtos artesanais para montar seu pedido de retirada.</p>
+                        <img src="images/mascote_aceno.jpg" alt="Mascote Pansani dando boas-vindas" class="cart-empty-mascot-img">
+                        <h4>Seu carrinho ainda está vazio</h4>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); max-width: 290px; margin: 0 auto; line-height: 1.4;">
+                            Nossa mascote já está no balcão te esperando! Escolha suas rações, cereais ou produtos da roça para montar seu pedido.
+                        </p>
+                        <button type="button" class="btn-primary" onclick="closeCart()" style="margin-top: 16px; padding: 10px 22px; font-size: 0.88rem;">
+                            <i class="fa-solid fa-bag-shopping"></i> Escolher produtos
+                        </button>
                     </div>
                 `;
                 checkoutArea.style.display = 'none';
@@ -3325,6 +3673,15 @@
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
+        }
+
+        // Controle do balão de fala da mascote
+        let mascotBubbleOpen = true;
+        function toggleMascotBubble(state) {
+            const bubble = document.getElementById('mascotBubble');
+            if (!bubble) return;
+            mascotBubbleOpen = state !== undefined ? state : !mascotBubbleOpen;
+            bubble.style.display = mascotBubbleOpen ? 'block' : 'none';
         }
 
         // Toggle do Menu Mobile
