@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cerealista Pansani — Rações, grãos e empório artesanal | Franca - SP</title>
-    <meta name="description" content="Cerealista Pansani: 37 anos de tradição. Rações pet e agro, grãos a granel, ovos caipiras, mel e cachaça artesanal direto do produtor em Franca - SP. Retire no balcão!">
-    
+    <meta name="description"
+        content="Cerealista Pansani: 37 anos de tradição. Rações pet e agro, grãos a granel, ovos caipiras, mel e cachaça artesanal direto do produtor em Franca - SP. Retire no balcão!">
+
     <!-- Open Graph / Redes Sociais -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Cerealista Pansani — Tradição e qualidade direto do produtor">
-    <meta property="og:description" content="Rações para animais de estimação e criação, cereais a granel e produtos artesanais da roça. Faça seu pedido para retirada no balcão!">
+    <meta property="og:description"
+        content="Rações para animais de estimação e criação, cereais a granel e produtos artesanais da roça. Faça seu pedido para retirada no balcão!">
     <meta property="og:image" content="about-image.jpg">
-    
+
     <!-- Google Fonts: Outfit (Títulos) & Plus Jakarta Sans (Texto) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -26,43 +31,48 @@
            ========================================================================== */
         :root {
             /* Paleta Agro-Chic: Verde Floresta + Âmbar/Mel + Tons Rústicos Aconchegantes */
-            --primary: #1E4620;        /* Verde profundo da terra */
+            --primary: #1E4620;
+            /* Verde profundo da terra */
             --primary-hover: #163618;
             --primary-light: #2D6A4F;
             --primary-subtle: #E8F5E9;
-            
-            --accent: #E67E22;         /* Âmbar/Laranja mel quente */
+
+            --accent: #E67E22;
+            /* Âmbar/Laranja mel quente */
             --accent-hover: #D35400;
             --accent-light: #FFF3E0;
-            
-            --secondary: #8D6E63;      /* Madeira / Terra rústica */
+
+            --secondary: #8D6E63;
+            /* Madeira / Terra rústica */
             --secondary-dark: #5D4037;
-            
-            --bg: #FBF9F5;             /* Off-white acolhedor */
+
+            --bg: #FBF9F5;
+            /* Off-white acolhedor */
             --surface: #FFFFFF;
             --surface-alt: #F4EFE6;
-            
-            --text: #212529;           /* Texto escuro com alto contraste */
+
+            --text: #212529;
+            /* Texto escuro com alto contraste */
             --text-muted: #6C757D;
             --text-light: #9E9E9E;
-            
+
             --border: #E8E2D8;
             --border-light: #F0EAE1;
-            
+
             --whatsapp: #25D366;
             --whatsapp-dark: #128C7E;
             --danger: #E53935;
-            
+
             --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.04);
             --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.07);
             --shadow-lg: 0 14px 30px rgba(0, 0, 0, 0.1);
             --shadow-drawer: -5px 0 35px rgba(0, 0, 0, 0.25);
-            
+
             --radius-sm: 8px;
             --radius-md: 14px;
             --radius-lg: 20px;
             --radius-full: 9999px;
-            
+
             --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             --container: 1240px;
         }
@@ -70,7 +80,9 @@
         /* ==========================================================================
            2. RESET & BASE
            ========================================================================== */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -102,7 +114,10 @@
             transition: var(--transition);
         }
 
-        button, input, select, textarea {
+        button,
+        input,
+        select,
+        textarea {
             font-family: inherit;
             font-size: inherit;
             border: none;
@@ -123,7 +138,12 @@
         }
 
         /* Tipografia */
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Outfit', sans-serif;
             color: var(--primary);
             font-weight: 700;
@@ -250,7 +270,8 @@
             padding: 6px 0;
         }
 
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover,
+        .nav-link.active {
             color: var(--primary);
         }
 
@@ -265,7 +286,8 @@
             transition: width 0.2s ease;
         }
 
-        .nav-link:hover::after, .nav-link.active::after {
+        .nav-link:hover::after,
+        .nav-link.active::after {
             width: 100%;
         }
 
@@ -318,9 +340,17 @@
         }
 
         @keyframes badgeBump {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.4); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.4);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .btn-header-zap {
@@ -486,7 +516,7 @@
             position: relative;
         }
 
-        .hero-card-featured > img {
+        .hero-card-featured>img {
             border-radius: var(--radius-md);
             width: 100%;
             height: 380px;
@@ -536,71 +566,6 @@
         /* ==========================================================================
            4.1. ELEMENTOS DA MASCOTE (ESTILO DISNEY / PIXAR)
            ========================================================================== */
-        /* Hero Mascote Card / Badge */
-        .hero-mascot-pill {
-            position: absolute;
-            top: -18px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--accent);
-            border-radius: var(--radius-full);
-            padding: 8px 18px 8px 10px;
-            box-shadow: 0 10px 25px rgba(230, 126, 34, 0.25);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 5;
-            animation: mascotFloat 4s ease-in-out infinite;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .hero-mascot-pill:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 14px 30px rgba(230, 126, 34, 0.35);
-        }
-
-        @keyframes mascotFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .hero-mascot-img {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            background: #fff;
-            flex-shrink: 0;
-        }
-
-        .hero-mascot-info {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .hero-mascot-title {
-            font-size: 0.76rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .hero-mascot-phrase {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.2;
-        }
-
         /* Sobre Nós - Card da Mascote */
         .about-mascot-card {
             margin-top: 25px;
@@ -633,7 +598,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #fff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .about-mascot-online-dot {
@@ -678,8 +643,15 @@
         }
 
         @keyframes mascotWave {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.04) rotate(2deg); }
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.04) rotate(2deg);
+            }
         }
 
         .cart-mascot-note {
@@ -703,7 +675,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #fff;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
         }
 
@@ -711,21 +683,21 @@
         .floating-mascot-container {
             position: fixed;
             bottom: 25px;
-            left: 25px;
+            right: 25px;
             z-index: 850;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-end;
             gap: 10px;
         }
 
         .mascot-speech-bubble {
             background: #fff;
             border: 2px solid var(--accent);
-            border-radius: 18px 18px 18px 4px;
+            border-radius: 18px 18px 4px 18px;
             padding: 12px 16px;
             max-width: 250px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
             font-size: 0.82rem;
             color: var(--text);
             line-height: 1.35;
@@ -767,7 +739,7 @@
             border: 2px solid var(--accent);
             padding: 6px 14px 6px 6px;
             border-radius: var(--radius-full);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
             cursor: pointer;
             transition: var(--transition);
         }
@@ -784,7 +756,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #fff;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .mascot-trigger-text {
@@ -966,13 +938,28 @@
             font-weight: 800;
             letter-spacing: 0.3px;
             text-transform: uppercase;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
         }
 
-        .badge-pet { background-color: var(--accent); color: #fff; }
-        .badge-agro { background-color: var(--primary-light); color: #fff; }
-        .badge-graos { background-color: #8D6E63; color: #fff; }
-        .badge-emporio { background-color: #A0522D; color: #fff; }
+        .badge-pet {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        .badge-agro {
+            background-color: var(--primary-light);
+            color: #fff;
+        }
+
+        .badge-graos {
+            background-color: #8D6E63;
+            color: #fff;
+        }
+
+        .badge-emporio {
+            background-color: #A0522D;
+            color: #fff;
+        }
 
         .product-image-container {
             position: relative;
@@ -1122,9 +1109,18 @@
         }
 
         @keyframes pricePulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); color: var(--accent); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+                color: var(--accent);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .price-pulse {
@@ -1646,8 +1642,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .cart-item-img {
@@ -1821,7 +1824,9 @@
             color: var(--text);
         }
 
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 10px 12px;
             border-radius: var(--radius-sm);
@@ -1831,7 +1836,9 @@
             transition: var(--transition);
         }
 
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(30, 70, 32, 0.12);
         }
@@ -1948,9 +1955,17 @@
         }
 
         @keyframes pulseZap {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-            70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
         }
 
         /* Toast de Feedback */
@@ -2080,36 +2095,28 @@
                 padding: 30px 20px;
             }
 
-            .hero-mascot-pill {
-                top: -12px;
-                right: 10px;
-                padding: 6px 12px 6px 8px;
-            }
-            .hero-mascot-img {
-                width: 40px;
-                height: 40px;
-            }
-            .hero-mascot-phrase {
-                font-size: 0.76rem;
-            }
             .about-mascot-card {
                 flex-direction: column;
                 text-align: center;
                 gap: 12px;
             }
+
             .floating-mascot-container {
                 bottom: 15px;
-                left: 15px;
+                right: 15px;
             }
+
             .mascot-trigger-text {
                 display: none;
             }
+
             .mascot-trigger-btn {
                 padding: 4px;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- ==========================================================================
@@ -2145,7 +2152,8 @@
                 </button>
 
                 <!-- Botão WhatsApp Direto -->
-                <a href="https://wa.me/5516993596161?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Cerealista%20Pansani." target="_blank" rel="noopener" class="btn-header-zap">
+                <a href="https://wa.me/5516993596161?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Cerealista%20Pansani."
+                    target="_blank" rel="noopener" class="btn-header-zap">
                     <i class="fa-brands fa-whatsapp"></i>
                     <span>(16) 99359-6161</span>
                 </a>
@@ -2169,18 +2177,20 @@
                         <i class="fa-solid fa-medal"></i> 37 anos de tradição e confiança
                     </div>
                     <h1>
-                        Tradição e qualidade. <br>
                         <span class="highlight">Direto do produtor</span> para sua casa!
                     </h1>
                     <p>
-                        Rações selecionadas para pet e criação, grãos e cereais a granel, além de produtos artesanais autênticos da roça. Faça seu pedido online e retire no balcão com agilidade!
+                        Rações selecionadas para pet e criação, grãos e cereais a granel, além de produtos artesanais
+                        autênticos da roça. Faça seu pedido online e retire no balcão com agilidade!
                     </p>
                     <div class="hero-buttons">
                         <a href="#produtos" class="btn-primary">
                             <i class="fa-solid fa-bag-shopping"></i> Ver produtos
                         </a>
-                        <a href="https://wa.me/5516993596161?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20personalizado." target="_blank" rel="noopener" class="btn-secondary">
-                            <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-dark);"></i> Falar com atendente
+                        <a href="https://wa.me/5516993596161?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20personalizado."
+                            target="_blank" rel="noopener" class="btn-secondary">
+                            <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-dark);"></i> Falar com
+                            atendente
                         </a>
                     </div>
                     <div class="hero-trust-badges">
@@ -2200,24 +2210,15 @@
                 </div>
 
                 <div class="hero-media">
-                    <!-- Mascote Boas-Vindas estilo Disney -->
-                    <div class="hero-mascot-pill" onclick="document.getElementById('sobre').scrollIntoView({behavior: 'smooth'})" title="Conheça nossa anfitriã do balcão!">
-                        <img src="images/mascote_aceno.jpg" alt="Mascote da Cerealista Pansani dando boas-vindas" class="hero-mascot-img">
-                        <div class="hero-mascot-info">
-                            <span class="hero-mascot-title">Mascote oficial 🐾</span>
-                            <span class="hero-mascot-phrase">"Oi! Seja bem-vindo à nossa casa!"</span>
-                        </div>
-                    </div>
-
                     <div class="hero-card-featured">
-                        <img src="about-image.jpg" alt="Atendimento acolhedor da Cerealista Pansani" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&auto=format&fit=crop&q=80';">
+                        <img src="about-image.jpg" alt="Atendimento acolhedor da Cerealista Pansani"
+                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&auto=format&fit=crop&q=80';">
                         <div class="hero-floating-tag">
                             <div class="icon-box">
                                 <i class="fa-solid fa-paw"></i>
                             </div>
                             <div class="text">
-                                <h5>Loja física e balcão em Franca</h5>
-                                <p>Tudo para seus animais e sua chácara</p>
+                                <h5>Balcão de atendimento</h5>
                             </div>
                         </div>
                     </div>
@@ -2283,7 +2284,8 @@
                     </div>
                     <h2 class="section-title">Escolha seus produtos</h2>
                     <p class="section-subtitle">
-                        Navegue por nossas categorias, monte seu pedido e envie diretamente pelo WhatsApp para separação e retirada no balcão.
+                        Navegue por nossas categorias, monte seu pedido e envie diretamente pelo WhatsApp para separação
+                        e retirada no balcão.
                     </p>
                 </div>
 
@@ -2327,7 +2329,8 @@
             <div class="container about-grid">
                 <div class="about-media">
                     <div class="about-img-frame">
-                        <img src="about-image.jpg" alt="Fachada e balcão tradicional da Cerealista Pansani em Franca SP" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&auto=format&fit=crop&q=80';">
+                        <img src="about-image.jpg" alt="Fachada e balcão tradicional da Cerealista Pansani em Franca SP"
+                            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=800&auto=format&fit=crop&q=80';">
                     </div>
                     <div class="about-badge-exp">
                         <div class="number">37</div>
@@ -2341,10 +2344,13 @@
                     </div>
                     <h2>Tradição e modernidade caminhando juntas</h2>
                     <p>
-                        A <strong>Cerealista Pansani</strong> tem o compromisso, há mais de três décadas, de oferecer o que há de melhor para o homem do campo e para os apaixonados por animais de estimação.
+                        A <strong>Cerealista Pansani</strong> tem o compromisso, há mais de três décadas, de oferecer o
+                        que há de melhor para o homem do campo e para os apaixonados por animais de estimação.
                     </p>
                     <p>
-                        Aqui você encontra desde sacarias fechadas e grãos a granel para grandes criações até rações Super Premium e mimos para seus cães, gatos e pássaros. Valorizamos o produtor local trazendo ovos caipiras legítimos, mel puro e o autêntico café artesanal de Franca e região.
+                        Aqui você encontra desde sacarias fechadas e grãos a granel para grandes criações até rações
+                        Super Premium e mimos para seus cães, gatos e pássaros. Valorizamos o produtor local trazendo
+                        ovos caipiras legítimos, mel puro e o autêntico café artesanal de Franca e região.
                     </p>
 
                     <ul class="about-features-list">
@@ -2357,19 +2363,24 @@
                     <!-- Card Especial da Mascote da Loja -->
                     <div class="about-mascot-card">
                         <div class="about-mascot-avatar-wrap">
-                            <img src="images/mascote_balcao.jpg" alt="Mascote oficial felina no balcão da Cerealista Pansani" class="about-mascot-avatar">
+                            <img src="images/mascote_balcao.jpg"
+                                alt="Mascote oficial felina no balcão da Cerealista Pansani"
+                                class="about-mascot-avatar">
                             <span class="about-mascot-online-dot" title="Sempre presente no balcão"></span>
                         </div>
                         <div class="about-mascot-content">
                             <h4>Nossa anfitriã oficial do balcão 🐾</h4>
                             <p>
-                                Quem visita nosso balcão físico em Franca sempre é recebido pela nossa fiel mascote felina. Calma, carinhosa e atenta a tudo, ela é o símbolo vivo do acolhimento e da tradição da família Pansani!
+                                Quem visita nosso balcão físico em Franca sempre é recebido pela nossa fiel mascote
+                                felina. Calma, carinhosa e atenta a tudo, ela é o símbolo vivo do acolhimento e da
+                                tradição da família Pansani!
                             </p>
                         </div>
                     </div>
 
                     <div style="margin-top: 25px;">
-                        <a href="https://wa.me/5516993596161?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Cerealista%20Pansani." target="_blank" rel="noopener" class="btn-primary">
+                        <a href="https://wa.me/5516993596161?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Cerealista%20Pansani."
+                            target="_blank" rel="noopener" class="btn-primary">
                             <i class="fa-brands fa-whatsapp"></i> Fale conosco pelo WhatsApp
                         </a>
                     </div>
@@ -2435,11 +2446,9 @@
                     </div>
 
                     <div class="contact-map-panel">
-                        <iframe 
-                            src="https://www.google.com/maps?q=R.+Joaquim+Leôncio+Coelho,+120+-+Jardim+Conceicao+Leite,+Franca+-+SP,+14405-362&output=embed" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
+                        <iframe
+                            src="https://www.google.com/maps?q=R.+Joaquim+Leôncio+Coelho,+120+-+Jardim+Conceicao+Leite,+Franca+-+SP,+14405-362&output=embed"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                             title="Mapa de Localização Cerealista Pansani em Franca SP">
                         </iframe>
                     </div>
@@ -2464,10 +2473,12 @@
                     </div>
                 </a>
                 <p>
-                    Qualidade, variedade e o melhor atendimento para o homem do campo e para seus animais de estimação. Direto do produtor para sua casa!
+                    Qualidade, variedade e o melhor atendimento para o homem do campo e para seus animais de estimação.
+                    Direto do produtor para sua casa!
                 </p>
                 <div class="footer-social-links">
-                    <a href="https://wa.me/5516993596161" target="_blank" rel="noopener" class="social-circle-link" aria-label="WhatsApp">
+                    <a href="https://wa.me/5516993596161" target="_blank" rel="noopener" class="social-circle-link"
+                        aria-label="WhatsApp">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
                     <a href="#" class="social-circle-link" aria-label="Instagram">
@@ -2493,10 +2504,14 @@
             <div class="footer-col">
                 <h4>Atendimento</h4>
                 <ul>
-                    <li><i class="fa-solid fa-phone" style="margin-right: 8px; color: var(--accent);"></i> (16) 99359-6161</li>
-                    <li><i class="fa-solid fa-location-dot" style="margin-right: 8px; color: var(--accent);"></i> Franca - SP</li>
-                    <li><i class="fa-solid fa-clock" style="margin-right: 8px; color: var(--accent);"></i> Seg-Sex: 7h às 17h30</li>
-                    <li><i class="fa-solid fa-calendar-day" style="margin-right: 8px; color: var(--accent);"></i> Sábado: 7h às 12h</li>
+                    <li><i class="fa-solid fa-phone" style="margin-right: 8px; color: var(--accent);"></i> (16)
+                        99359-6161</li>
+                    <li><i class="fa-solid fa-location-dot" style="margin-right: 8px; color: var(--accent);"></i> Franca
+                        - SP</li>
+                    <li><i class="fa-solid fa-clock" style="margin-right: 8px; color: var(--accent);"></i> Seg-Sex: 7h
+                        às 17h30</li>
+                    <li><i class="fa-solid fa-calendar-day" style="margin-right: 8px; color: var(--accent);"></i>
+                        Sábado: 7h às 12h</li>
                 </ul>
             </div>
         </div>
@@ -2528,7 +2543,8 @@
             <div>
                 <div class="cart-section-title">
                     <span>Itens selecionados</span>
-                    <button type="button" class="btn-clear-cart" id="btnClearCart" style="display: none;" onclick="clearCart()">
+                    <button type="button" class="btn-clear-cart" id="btnClearCart" style="display: none;"
+                        onclick="clearCart()">
                         <i class="fa-solid fa-trash-can"></i> Limpar tudo
                     </button>
                 </div>
@@ -2552,8 +2568,9 @@
 
                 <!-- Nota Receptiva da Mascote no Checkout -->
                 <div class="cart-mascot-note">
-                    <img src="images/mascote_aceno.jpg" alt="Mascote Pansani" class="cart-mascot-note-avatar">
-                    <span>Nossa mascote e equipe já estão preparadas no balcão para conferir e separar seu pedido com carinho! 🐾</span>
+                    <img src="images/mascote_aceno.jpg" alt="Zara Pansani" class="cart-mascot-note-avatar">
+                    <span>Nossa mascote e equipe já estão preparadas no balcão para conferir e separar seu pedido com
+                        carinho! 🐾</span>
                 </div>
 
                 <!-- Formulário de Finalização -->
@@ -2581,14 +2598,16 @@
 
                     <div class="form-group">
                         <label for="clientPhone">Seu WhatsApp com DDD *</label>
-                        <input type="tel" id="clientPhone" placeholder="(16) 99999-9999" required autocomplete="tel" maxlength="20">
+                        <input type="tel" id="clientPhone" placeholder="(16) 99999-9999" required autocomplete="tel"
+                            maxlength="20">
                     </div>
 
                     <!-- Checkbox de Consentimento Obrigatório (marcado como padrão) -->
                     <div class="consent-box" id="consentBox">
                         <input type="checkbox" id="consentCheck" checked required>
                         <label for="consentCheck">
-                            Autorizo o contato da Cerealista Pansani pelo WhatsApp para confirmação do pedido, conferência de estoque e separação para retirada. *
+                            Autorizo o contato da Cerealista Pansani pelo WhatsApp para confirmação do pedido,
+                            conferência de estoque e separação para retirada. *
                         </label>
                     </div>
 
@@ -2605,26 +2624,17 @@
         </div>
     </aside>
 
-    <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://wa.me/5516993596161?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20produtos." 
-       target="_blank" 
-       rel="noopener" 
-       class="floating-zap" 
-       id="floatingZap" 
-       aria-label="Falar conosco no WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
     <!-- Assistente Receptivo Flutuante da Mascote -->
     <div class="floating-mascot-container" id="floatingMascotContainer">
         <div class="mascot-speech-bubble" id="mascotBubble">
-            <button type="button" class="close-btn" onclick="toggleMascotBubble(false)" aria-label="Fechar balão">&times;</button>
+            <button type="button" class="close-btn" onclick="toggleMascotBubble(false)"
+                aria-label="Fechar balão">&times;</button>
             <strong>Oi, amigo cliente! 🐾</strong>
             <span>Monte seu pedido aqui no site para retirar no balcão ou me chame no WhatsApp!</span>
         </div>
         <button type="button" class="mascot-trigger-btn" onclick="toggleMascotBubble()" aria-label="Mascote Pansani">
-            <img src="images/mascote_aceno.jpg" alt="Mascote Pansani" class="mascot-trigger-avatar">
-            <span class="mascot-trigger-text">Mascote Pansani <span class="mascot-trigger-tag">Online</span></span>
+            <img src="images/mascote_aceno.jpg" alt="Zara Pansani" class="mascot-trigger-avatar">
+            <span class="mascot-trigger-text">Zara Pansani <span class="mascot-trigger-tag">Online</span></span>
         </button>
     </div>
 
@@ -3008,7 +3018,7 @@
         function getActiveVariant(prod) {
             if (!prod.hasVariants || !prod.variants || prod.variants.length === 0) return null;
             const sel = productSelections[prod.id] || {};
-            
+
             let matches = prod.variants;
             if (sel.brand) {
                 const bMatches = matches.filter(v => v.brand === sel.brand);
@@ -3232,11 +3242,11 @@
         function renderProducts() {
             const filtered = PRODUCTS.filter(prod => {
                 const matchCategory = activeCategory === 'all' || prod.category === activeCategory;
-                const matchSearch = searchQuery === '' || 
+                const matchSearch = searchQuery === '' ||
                     prod.name.toLowerCase().includes(searchQuery) ||
                     prod.desc.toLowerCase().includes(searchQuery) ||
                     (prod.unit && prod.unit.toLowerCase().includes(searchQuery)) ||
-                    (prod.variants && prod.variants.some(v => 
+                    (prod.variants && prod.variants.some(v =>
                         (v.brand && v.brand.toLowerCase().includes(searchQuery)) ||
                         (v.weight && v.weight.toLowerCase().includes(searchQuery)) ||
                         (v.spec && v.spec.toLowerCase().includes(searchQuery))
@@ -3258,9 +3268,9 @@
             }
 
             productsGrid.innerHTML = filtered.map(prod => {
-                const badgeClass = prod.category === 'pet' ? 'badge-pet' : 
-                                   (prod.category === 'agro' ? 'badge-agro' : 
-                                   (prod.category === 'graos' ? 'badge-graos' : 'badge-emporio'));
+                const badgeClass = prod.category === 'pet' ? 'badge-pet' :
+                    (prod.category === 'agro' ? 'badge-agro' :
+                        (prod.category === 'graos' ? 'badge-graos' : 'badge-emporio'));
 
                 const active = getActiveVariant(prod);
                 const displayPrice = active ? active.price : prod.price;
@@ -3305,7 +3315,7 @@
         categoryTabs.addEventListener('click', (e) => {
             const btn = e.target.closest('.tab-btn');
             if (!btn) return;
-            
+
             categoryTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             activeCategory = btn.dataset.category;
@@ -3379,7 +3389,7 @@
             saveCartToStorage();
             updateCartUI();
 
-            const toastText = variantDesc 
+            const toastText = variantDesc
                 ? `${qtyToAdd}x ${prod.name} (${variantDesc}) adicionado!`
                 : `${qtyToAdd}x ${prod.name} adicionado ao carrinho!`;
             showToast(toastText);
@@ -3423,7 +3433,7 @@
 
         function updateCartUI() {
             const { totalCount, totalPrice } = calculateCartTotals();
-            
+
             // Atualiza badge no cabeçalho
             const badge = document.getElementById('cartBadge');
             badge.textContent = totalCount;
@@ -3549,16 +3559,16 @@
             return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7, 11)}`;
         }
 
-        clientPhoneInput.addEventListener('input', function(e) {
+        clientPhoneInput.addEventListener('input', function (e) {
             e.target.value = formatPhoneNumber(e.target.value);
         });
 
-        clientPhoneInput.addEventListener('blur', function(e) {
+        clientPhoneInput.addEventListener('blur', function (e) {
             e.target.value = formatPhoneNumber(e.target.value);
         });
 
         // Validação da caixa de consentimento
-        consentCheckbox.addEventListener('change', function() {
+        consentCheckbox.addEventListener('change', function () {
             if (!this.checked) {
                 btnFinalizeOrder.disabled = true;
                 consentBox.classList.add('warning');
@@ -3569,7 +3579,7 @@
         });
 
         // AÇÃO: Finalizar pedido via WhatsApp
-        btnFinalizeOrder.addEventListener('click', function() {
+        btnFinalizeOrder.addEventListener('click', function () {
             if (cart.length === 0) {
                 alert('Seu carrinho está vazio! Adicione produtos antes de prosseguir.');
                 return;
@@ -3600,7 +3610,7 @@
             }
 
             const { totalPrice } = calculateCartTotals();
-            
+
             // Monta lista legível de produtos com quebras de linha limpas
             let itemsText = '';
             cart.forEach(item => {
@@ -3610,7 +3620,7 @@
             });
 
             // Mensagem completa em texto puro
-            const orderMessage = 
+            const orderMessage =
                 `🌾 *NOVO PEDIDO — CEREALISTA PANSANI* 🐾\n` +
                 `------------------------------------------\n` +
                 `👤 *DADOS DO CLIENTE:*\n` +
@@ -3642,7 +3652,7 @@
             clientPhoneInput.value = '';
 
             showToast('Pedido enviado ao WhatsApp! Carrinho limpo para novas compras.');
-            
+
             setTimeout(() => {
                 closeCart();
             }, 1200);
@@ -3722,4 +3732,5 @@
         });
     </script>
 </body>
+
 </html>
