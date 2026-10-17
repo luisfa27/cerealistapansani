@@ -750,6 +750,13 @@
             box-shadow: 0 8px 22px rgba(230, 126, 34, 0.3);
         }
 
+        .mascot-avatar-wrap {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .mascot-trigger-avatar {
             width: 44px;
             height: 44px;
@@ -757,6 +764,27 @@
             object-fit: cover;
             border: 2px solid #fff;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mascot-mobile-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #D35400;
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 4px;
+            border-radius: 10px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+            animation: bounceIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .mascot-trigger-text {
@@ -764,6 +792,9 @@
             font-weight: 700;
             color: var(--primary);
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .mascot-trigger-tag {
@@ -773,7 +804,48 @@
             padding: 2px 6px;
             border-radius: 10px;
             font-weight: 800;
-            margin-left: 4px;
+        }
+
+        /* Estilo da Mascote em Modo Carrinho Ativo */
+        .mascot-trigger-btn.has-cart {
+            background: linear-gradient(135deg, #FFFDF8 0%, #FFF3E0 100%);
+            border-color: #E67E22;
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.35);
+            animation: mascotCartFloat 3s infinite ease-in-out;
+        }
+
+        .mascot-trigger-btn.has-cart:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 10px 26px rgba(230, 126, 34, 0.5);
+            border-color: #D35400;
+        }
+
+        .mascot-trigger-btn.has-cart .mascot-trigger-avatar {
+            width: 48px;
+            height: 48px;
+            border-color: #E67E22;
+            background: #fff;
+        }
+
+        .mascot-cart-badge {
+            background: #D35400;
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(211, 84, 0, 0.3);
+        }
+
+        @keyframes mascotCartFloat {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 6px 20px rgba(230, 126, 34, 0.35);
+            }
+            50% {
+                transform: translateY(-4px);
+                box-shadow: 0 10px 25px rgba(230, 126, 34, 0.48);
+            }
         }
 
         /* ==========================================================================
@@ -2626,14 +2698,20 @@
     <!-- Assistente Receptivo Flutuante da Mascote -->
     <div class="floating-mascot-container" id="floatingMascotContainer">
         <div class="mascot-speech-bubble" id="mascotBubble">
-            <button type="button" class="close-btn" onclick="toggleMascotBubble(false)"
+            <button type="button" class="close-btn" onclick="toggleMascotBubble(false, event)"
                 aria-label="Fechar balão">&times;</button>
-            <strong>Oi, amigo cliente! 🐾</strong>
-            <span>Monte seu pedido aqui no site para retirar no balcão ou me chame no WhatsApp!</span>
+            <strong id="mascotBubbleTitle">Oi, amigo cliente! 🐾</strong>
+            <span id="mascotBubbleText">Monte seu pedido aqui no site para retirar no balcão ou me chame no WhatsApp!</span>
         </div>
-        <button type="button" class="mascot-trigger-btn" onclick="toggleMascotBubble()" aria-label="Mascote Pansani">
-            <img src="images/mascote_aceno.jpg" alt="Zara Pansani" class="mascot-trigger-avatar">
-            <span class="mascot-trigger-text">Zara Pansani <span class="mascot-trigger-tag">Online</span></span>
+        <button type="button" class="mascot-trigger-btn" id="mascotTriggerBtn" onclick="handleMascotClick()" aria-label="Mascote Pansani">
+            <div class="mascot-avatar-wrap">
+                <img src="images/mascote_aceno.jpg" alt="Zara Pansani" class="mascot-trigger-avatar" id="mascotAvatarImg">
+                <span class="mascot-mobile-badge" id="mascotMobileBadge">0</span>
+            </div>
+            <span class="mascot-trigger-text" id="mascotTriggerContent">
+                <span>Zara Pansani</span>
+                <span class="mascot-trigger-tag">Online</span>
+            </span>
         </button>
     </div>
 
@@ -3387,6 +3465,7 @@
 
             saveCartToStorage();
             updateCartUI();
+            toggleMascotBubble(true);
 
             const toastText = variantDesc
                 ? `${qtyToAdd}x ${prod.name} (${variantDesc}) adicionado!`
@@ -3444,6 +3523,9 @@
             const btnFinalize = document.getElementById('btnFinalizeOrder');
 
             totalDisplay.textContent = `R$ ${formatMoney(totalPrice)}`;
+
+            // Atualiza o modo da Mascote Flutuante (Atendimento x Carrinho)
+            updateMascotState(totalCount, totalPrice);
 
             if (cart.length === 0) {
                 itemsContainer.innerHTML = `
@@ -3684,13 +3766,82 @@
             }, 3000);
         }
 
-        // Controle do balão de fala da mascote
+        // ==========================================================================
+        // 8. CONTROLE DA MASCOTE FLUTUANTE (ATENDIMENTO VS. MODO CARRINHO)
+        // ==========================================================================
         let mascotBubbleOpen = true;
-        function toggleMascotBubble(state) {
+
+        function toggleMascotBubble(state, event) {
+            if (event) event.stopPropagation();
             const bubble = document.getElementById('mascotBubble');
             if (!bubble) return;
             mascotBubbleOpen = state !== undefined ? state : !mascotBubbleOpen;
             bubble.style.display = mascotBubbleOpen ? 'block' : 'none';
+        }
+
+        // Quando houver produtos no carrinho, clicar na mascote abre o carrinho; senão alterna o balão de atendimento
+        function handleMascotClick() {
+            if (cart.length > 0) {
+                openCart();
+            } else {
+                toggleMascotBubble();
+            }
+        }
+
+        function updateMascotState(totalCount, totalPrice) {
+            const btn = document.getElementById('mascotTriggerBtn');
+            const avatar = document.getElementById('mascotAvatarImg');
+            const triggerContent = document.getElementById('mascotTriggerContent');
+            const mobileBadge = document.getElementById('mascotMobileBadge');
+            const bubbleTitle = document.getElementById('mascotBubbleTitle');
+            const bubbleText = document.getElementById('mascotBubbleText');
+
+            if (!btn || !avatar || !triggerContent) return;
+
+            if (totalCount > 0) {
+                // Modo Carrinho: Transforma na gatinha empurrando carrinho e convida a ir para o carrinho
+                btn.classList.add('has-cart');
+                btn.setAttribute('aria-label', `Ir para o carrinho com ${totalCount} itens`);
+                avatar.src = 'images/mascote_carrinho.jpg';
+                avatar.alt = 'Zara Pansani empurrando carrinho de compras';
+
+                if (mobileBadge) {
+                    mobileBadge.textContent = totalCount;
+                    mobileBadge.style.display = 'flex';
+                }
+
+                triggerContent.innerHTML = `
+                    <i class="fa-solid fa-cart-shopping" style="color: var(--accent);"></i>
+                    <span>Ver Carrinho</span>
+                    <span class="mascot-cart-badge">${totalCount}</span>
+                `;
+
+                if (bubbleTitle && bubbleText) {
+                    bubbleTitle.innerHTML = 'Seu carrinho tá pronto! 🛒';
+                    bubbleText.textContent = `Clique aqui para ver ${totalCount} ${totalCount === 1 ? 'item' : 'itens'} no carrinho e finalizar no balcão!`;
+                }
+            } else {
+                // Modo Atendimento Padrão (carrinho vazio): mascote acenando com frase receptiva
+                btn.classList.remove('has-cart');
+                btn.setAttribute('aria-label', 'Assistente Virtual Zara Pansani');
+                avatar.src = 'images/mascote_aceno.jpg';
+                avatar.alt = 'Zara Pansani';
+
+                if (mobileBadge) {
+                    mobileBadge.style.display = 'none';
+                    mobileBadge.textContent = '0';
+                }
+
+                triggerContent.innerHTML = `
+                    <span>Zara Pansani</span>
+                    <span class="mascot-trigger-tag">Online</span>
+                `;
+
+                if (bubbleTitle && bubbleText) {
+                    bubbleTitle.innerHTML = 'Oi, amigo cliente! 🐾';
+                    bubbleText.textContent = 'Monte seu pedido aqui no site para retirar no balcão ou me chame no WhatsApp!';
+                }
+            }
         }
 
         // Toggle do Menu Mobile
